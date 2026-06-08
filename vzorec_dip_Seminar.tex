@@ -46,17 +46,19 @@
 \usepackage{color}       % dodal Solina
 \usepackage{soul}       % dodal Solina
 \usepackage[numbers]{natbib}  % dodal Solina
+\usepackage{tikz}
+%\usepackage{float}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	DIPLOMA INFO
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\ttitle}{Vzorec diplomskega dela}
-\newcommand{\ttitleEn}{Diploma thesis sample}
+\newcommand{\ttitle}{Analiza spletnih storitev Microsoft 365 in uporaba Microsoft Graph pri razvoju informacijskih sistemov}
+\newcommand{\ttitleEn}{Analysis of Microsoft 365 web services and use of Microsoft Graph in information systems development}
 \newcommand{\tsubject}{\ttitle}
 \newcommand{\tsubjectEn}{\ttitleEn}
-\newcommand{\tauthor}{Matjaž Kralj}
-\newcommand{\tkeywords}{računalnik, računalnik, računalnik}
-\newcommand{\tkeywordsEn}{computer, computer, computer}
+\newcommand{\tauthor}{Mia Erbus}
+\newcommand{\tkeywords}{Microsoft 365, Microsoft Graph API, Microsoft Entra ID, ogrodje React}
+\newcommand{\tkeywordsEn}{Microsoft 365, Microsoft Graph API, Microsoft Entra ID, React framework}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,7 +66,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{pdftitle={\ttitle}}
 \hypersetup{pdfsubject=\ttitleEn}
-\hypersetup{pdfauthor={\tauthor, matjaz.kralj@fri.uni-lj.si}}
+\hypersetup{pdfauthor={\tauthor, me9223@student.uni-lj.si}}
 \hypersetup{pdfkeywords=\tkeywordsEn}
 
 
@@ -101,7 +103,7 @@
 \newcommand{\autfont}{\Large}
 \newcommand{\titfont}{\LARGE\bf}
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
-\setcounter{tocdepth}{1}	      % globina kazala
+\setcounter{tocdepth}{2}	      % globina kazala
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % konstrukti
@@ -119,7 +121,7 @@
 % define medatata
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \def\Title{\ttitle}
-\def\Author{\tauthor, matjaz.kralj@fri.uni-lj.si}
+\def\Author{\tauthor, me9223@student.uni-lj.si}
 \def\Subject{\ttitleEn}
 \def\Keywords{\tkeywordsEn}
 
@@ -192,22 +194,22 @@
 %      Fakulteta za elektrotehniko\\% za študijski program Multimedija
 %      Fakulteta za upravo\\% za študijski program Upravna informatika
       Fakulteta za računalništvo in informatiko\\%
-%      Fakulteta za matematiko in fiziko\\% za študijski program Računalništvo in matematika
+     Fakulteta za matematiko in fiziko\\% za študijski program Računalništvo in matematika
      }
     \vskip 10em%
     {\autfont \tauthor\par}%
     {\titfont \ttitle \par}%
     {\vskip 3em \textsc{DIPLOMSKO DELO\\[5mm]         % dodal Solina za ostale študijske programe
 %    VISOKOŠOLSKI STROKOVNI ŠTUDIJSKI PROGRAM\\ PRVE STOPNJE\\ RAČUNALNIŠTVO IN INFORMATIKA}\par}%
-     UNIVERZITETNI  ŠTUDIJSKI PROGRAM\\ PRVE STOPNJE\\ RAČUNALNIŠTVO IN INFORMATIKA}\par}%
+%     UNIVERZITETNI  ŠTUDIJSKI PROGRAM\\ PRVE STOPNJE\\ RAČUNALNIŠTVO IN INFORMATIKA}\par}%
 %    INTERDISCIPLINARNI UNIVERZITETNI\\ ŠTUDIJSKI PROGRAM PRVE STOPNJE\\ MULTIMEDIJA}\par}%
 %    INTERDISCIPLINARNI UNIVERZITETNI\\ ŠTUDIJSKI PROGRAM PRVE STOPNJE\\ UPRAVNA INFORMATIKA}\par}%
-%    INTERDISCIPLINARNI UNIVERZITETNI\\ ŠTUDIJSKI PROGRAM PRVE STOPNJE\\ RAČUNALNIŠTVO IN MATEMATIKA}\par}%
+   INTERDISCIPLINARNI UNIVERZITETNI\\ ŠTUDIJSKI PROGRAM PRVE STOPNJE\\ RAČUNALNIŠTVO IN MATEMATIKA}\par}%
     \vfill\null%
 % izberite pravi habilitacijski naziv mentorja!
-    {\large \textsc{Mentor}: viš. pred./doc./izr. prof./prof. dr. Peter Klepec\par}%
-   {\large \textsc{Somentor}:  viš. pred./doc./izr. prof./prof. dr.  Martin Krpan \par}%
-    {\vskip 2em \large Ljubljana, 2019 \par}%
+    {\large \textsc{Mentor}: doc. dr. Rok Rupnik\par}%
+%   {\large \textsc{Somentor}:  viš. pred./doc./izr. prof./prof. dr.  Martin Krpan \par}%
+    {\vskip 2em \large Ljubljana, 2026 \par}%
 \end{center}
 % prazna stran
 %\clearemptydoublepage      % dodal Solina (izjava o licencah itd. se izpiše na hrbtni strani naslovnice)
@@ -236,13 +238,13 @@ Za objavo in koriščenje rezultatov diplomske naloge je potrebno pisno privolje
 \vfill
 
 \bigskip
-\noindent\textbf{Kandidat:} Ime Priimek\\
-\noindent\textbf{Naslov:} Naslov diplome v slovenščini\\
+\noindent\textbf{Kandidat:} Mia Erbus\\
+\noindent\textbf{Naslov:} Analiza spletnih storitev Microsoft 365 in uporaba Microsoft Graph pri razvoju informacijskih sistemov\\
 % vstavite ustrezen naziv študijskega programa!
-\noindent\textbf{Vrsta naloge:} npr. Diplomska naloga na univerzitetnem programu prve stopnje Računalništvo in informatika \\
+\noindent\textbf{Vrsta naloge:} Diplomska naloga na univerzitetnem programu prve stopnje interdisciplinarnega študija Računalništvo in matematika \\
 % izberite pravi habilitacijski naziv mentorja!
-\noindent\textbf{Mentor:} viš. pred. / doc. / izr. prof. / prof. dr. Ime Priimek\\
-\noindent\textbf{Somentor:} isto kot za mentorja
+\noindent\textbf{Mentor:} doc. dr. Rok Rupnik\\
+% \noindent\textbf{Somentor:} isto kot za mentorja
 
 \bigskip
 \noindent\textbf{Opis:}\\
@@ -251,7 +253,7 @@ V nekaj stavkih bo opisal, kaj pričakuje od kandidatovega diplomskega dela.
 Kaj so cilji, kakšne metode naj uporabi, morda bo zapisal tudi ključno literaturo.
 
 \bigskip
-\noindent\textbf{Title:} Naslov diplome v angleščini
+\noindent\textbf{Title:} Analysis of Microsoft 365 web services and use of Microsoft Graph in information systems development
 
 \bigskip
 \noindent\textbf{Description:}\\
@@ -372,389 +374,504 @@ A proper abstract should contain around 100 words which makes this one way too s
 \pagestyle{fancy}
 
 \chapter{Uvod}
-Prvi koristen nasvet v zvezi uporabo \LaTeX{a} je, da v celoti preberete ta dokument!
+Sodobna podjetja pri svojem poslovanju uporabljajo številne informacijske sisteme in komunikacijska orodja, kot so elektronska pošta, koledarji, sistemi za videokonference, dokumentni repozitoriji ter različne poslovne aplikacije.
+Ker so te storitve pogosto med seboj ločene, se pojavljajo izzivi pri povezovanju podatkov, podvajanju funkcionalnosti in učinkovitem sodelovanju med uporabniki ter aplikacijami.
 
-Datoteka {\tt vzorec\_dip\_Seminar.tex} na kratko opisuje, kako se pisanja diplomskega dela lotimo z uporabo programskega okolja \LaTeX~\cite{lamport,nenajkrajsi}. 
-V tem dokumentu bomo predstavili nekaj njegovih prednosti in hib. 
-Kar se slednjih tiče, nam pride na misel ena sama. 
-Ko se srečamo z njim prvič, nam izgleda morda kot kislo jabolko, nismo prepričani, ali bi želeli vanj ugrizniti. 
-Toda prav iz kislih jabolk lahko pripravimo odličen jabolčni zavitek in s praktičnim preizkusom \LaTeX a najlažje pridemo na njegov pravi okus.
+Razvoj oblačnega računalništva je omogočil prehod z lokalno vzdrževanih informacijskih sistemov na celovite oblačne platforme, ki združujejo različne poslovne storitve v enotno okolje.
+Med najpomembnejšimi tovrstnimi reši-tvami je Microsoft 365, ki poleg pisarniških aplikacij vključuje tudi storitve za komunikacijo, sodelovanje, upravljanje dokumentov, videokonference ter upravljanje uporabniških identitet.
 
-\LaTeX\ omogoča logično urejanje besedil, ki ima v primerjavi z vizualnim urejanjem številne prednosti, saj se problema urejanja besedil loti s programerskega stališča.
-Logično urejanje besedil omogoča večjo konsistentnost, uniformnost in  prenosljivost besedil. 
-Vsebinska struktura nekega besedila pa se odraža v strukturiranem \LaTeX ovem kodiranju besedila.
+Ključni povezovalni element platforme Microsoft 365 predstavlja Microsoft Graph API, ki razvijalcem omogoča enoten programski dostop do različ-nih storitev in podatkov znotraj ekosistema Microsoft 365.
+Preko enotnega vmesnika je mogoče dostopati do storitev, kot so Outlook, OneDrive, SharePoint, Teams in Entra ID, ter njihove funkcionalnosti vključevati v lastne informacijske rešitve. Microsoft Graph tako omogoča razvoj prilagojenih poslovnih aplikacij, integracijo podatkov med storitvami ter avtomatizacijo poslovnih procesov.
 
-V \ref{ch0}.~poglavju bomo spoznali osnovne gradnike \LaTeX{a}.
-V \ref{ch1}.~poglavju bomo na hitro spoznali besedilne konstrukte kot so izreki, enačbe in dokazi. 
-Naučili se bomo, kako se na njih sklicujemo. 
-\ref{ch2}.~poglavje bo predstavilo vključevanje plovk: slik in tabel. 
-Poglavje \ref{stroka} na kratko predstavi tipične sestavne dele strokovnega besedila.
-V \ref{slo}.~poglavju omenjamo nekaj najpogostejših slovničnih napak, ki jih delamo v slovenščini.
-V \ref{latex}.~poglavju je še nekaj koristnih praktičnih nasvetov v zvezi z uporabo \LaTeX{a}.
-V \ref{lit}.~poglavju se bomo srečali s sklicevanjem na literaturo,
-\ref{PDF}.~poglavje pa govori o formatu PDF/A, v katerem morate svojo diplomo oddati v sistemu STUDIS.
-Sledil bo samo še zaključek.
+Kljub številnim prednostim razvoj aplikacij na osnovi Microsoft Graph API predstavlja tudi določene tehnične izzive. Razvijalci morajo razumeti mehanizme avtentikacije in avtorizacije, ki temeljijo na protokolu OAuth 2.0, upravljati dostopne žetone ter ustrezno konfigurirati model dovoljenj.
+Poleg tega je treba upoštevati varnostne zahteve, omejitve števila zahtevkov ter obsežno in pogosto spreminjajočo se dokumentacijo.
+Čeprav organizacije Microsoft 365 množično uporabljajo za elektronsko pošto, upravljanje dokumentov in spletno sodelovanje, ostajajo možnosti razvoja prilagojenih informacijskih sistemov ter avtomatizacije poslovnih procesov v številnih primerih še vedno premalo izkoriščene.
 
-Ta vzorec ni priročnik za uporabo \LaTeX{a}, saj razloži le nekatere osnovne ukaze, druge funkcionalnosti pa le omeni. Kako se jih uporablja
-pa naj bralec poišče drugje.
+Motivacija za izdelavo diplomske naloge izhaja iz potrebe po poglobljenem razumevanju platforme Microsoft 365 kot sodobnega okolja za razvoj informacijskih sistemov ter preučevanju možnosti, ki jih za integracijo poslovnih procesov in storitev ponuja Microsoft Graph API.
+Namen naloge je analizirati arhitekturo platforme Microsoft 365 in njen programski vmesnik Microsoft Graph, raziskati možnosti povezovanja poslovnih aplikacij ter ovrednotiti njegovo uporabnost pri razvoju informacijskih rešitev.
+Teoretična spoznanja bodo podprta s praktično implementacijo demonstracijske aplikacije.
 
+V okviru praktičnega dela bo razvita enostranska spletna aplikacija z uporabo ogrodja React, programskega jezika TypeScript ter razvojnega orodja Vite.
+Za avtentikacijo uporabnikov in pridobivanje dostopnih žetonov bo uporabljena knjižnica Microsoft Authentication Library (MSAL).
+Aplikacija bo komunicirala z vmesnikom Microsoft Graph API ter omogočala dostop do podatkov uporabniškega profila, pošiljanje elektronske pošte prek storitve Outlook, pregled vsebine uporabniškega prostora OneDrive, nalaganje dokumentov in ustvarjanje povezav za njihovo skupno rabo. Takšna implementacija bo omogočila praktično preverjanje zmogljivosti in omejitev platforme pri razvoju sodobnih spletnih aplikacij.
 
-\chapter{Osnovni gradniki \LaTeX{a}}
-\label{ch0}
-
-\LaTeX\ bi lahko najbolj preprosto opisali kot programski jezik namenjen oblikovanju besedil.
-Tako kot vsak visokonivojski programski jezik ima tudi \LaTeX\  številne ukaze za oblikovanje  besedila in okolja, ki omogočajo strukturiranje besedila.
-
-Vsi \LaTeX ovi ukazi se začnejo z levo poševnico  \verb=\=, okolja pa definiramo bodisi s parom zavitih oklepajev \{ in \} ali z ukazoma \verb=\begin{ }= in   \verb=\end{ }=.
-Ukazi imajo lahko tudi argumente, obvezni argumenti so podani v zavitih oklepajih, opcijski argumenti pa v oglatih oklepajih.
-
-Z ukazi torej definiramo naslov in imena avtorjev besedila, poglavja in podpoglavja in po potrebi bolj podrobno strukturiramo besedila na spiske, navedke itd.
-Posebna okolja so namenjena zapisu matematičnih izrazov, kratki primeri so v naslednjem poglavju.
-
-Vse besedilne konstrukte lahko poimenujemo in se s pomočjo teh imen nato  kjerkoli v besedilu na njih  tudi sklicujemo.
-
-\LaTeX\ sam razporeja besede v odstavke tako, da optimizira razmike med besedami v celotnem odstavku.
-Nov odstavek začnemo tako, da izpustimo v izvornem besedilu prazno vrstico. Da besedilo skoči v novo vrstico pa ukažemo z dvema levima poševnicama.
-Število presledkov med besedami v izvornem besedilo ni pomembno.
+Diplomska naloga je razdeljena na več poglavij.
+V drugem poglavju je predstavljena platforma Microsoft 365 in njene ključne storitve.
+Tretje poglavje obravnava Microsoft Graph API, njegove osnovne značilnosti, strukturo zahtevkov in področja uporabe.
+V četrtem poglavju so predstavljeni varnostni mehanizmi, avtentikacija, avtorizacija in model dovoljenj.
+Peto poglavje opisuje načrtovanje in razvoj demonstracijske enostranske aplikacije.
+V šestem poglavju je predstavljena analiza rezultatov, prednosti in omejitve izbrane rešitve.
+Zadnje poglavje povzema ugotovitve naloge in podaja možnosti za nadaljnje delo.
 
 
-\chapter{Matematično okolje in sklicevanje na besedilne konstrukte}
-\label{ch1}
+\chapter{Arhitektura platforme Microsoft 365}
+
+Microsoft 365 je celovita oblačna platforma, ki temelji na večnajemniški (angl. multi-tenant) arhitekturi in uporabnikom omogoča dostop do aplikacij ter storitev prek interneta.
+V takšnem modelu si več organizacij deli skupno programsko in infrastrukturno okolje, pri čemer so podatki posameznih organizacij logično ločeni in zaščiteni.
+Večina storitev je uporabnikom na voljo v obliki modela SaaS (angl. Software as a Service), medtem ko platforma za svoje delovanje uporablja oblačno infrastrukturo Microsoft Azure.
+
+Arhitektura Microsoft 365 je zasnovana kot skupek medsebojno povezanih storitev, ki zagotavljajo komunikacijo, sodelovanje, upravljanje dokumentov, identitetne storitve in poslovne integracije.
+Ključne storitve, kot so Exchange Online, SharePoint Online, OneDrive for Business in Microsoft Teams, delujejo kot samostojne storitvene komponente, povezane prek skupnega identitetnega sistema in standardiziranih programskih vmesnikov.
+Takšna zasnova omogoča visoko razširljivost, neodvisno posodabljanje posameznih storitev ter visoko razpoložljivost sistema.
+
+Arhitekturo platforme Microsoft 365 lahko razdelimo na šest medsebojno povezanih slojev:
+
+\begin{itemize}
+\item uporabniški sloj,
+\item aplikacijski sloj,
+\item podatkovni sloj,
+\item identitetni in varnostni sloj,
+\item integracijski in razvojni sloj,
+\item infrastrukturni sloj.
+\end{itemize}
 
 
+\section{Uporabniški sloj}
 
-Matematična ali popolna indukcija je eno prvih orodij, ki jih spoznamo za dokazovanje trditev pri matematičnih predmetih.
-\begin{izrek}
-\label{iz:1}
-Za vsako naravno število $n$ velja
-\begin{equation}
-n < 2^n.
-\label{eq:1}
-\end{equation}
-\end{izrek}
-\begin{dokaz}
-Dokazovanje z indukcijo zahteva, da neenakost~\eqref{eq:1} najprej preverimo za najmanjše naravno število -- $0$. 
-Res, ker je $0 < 1 = 2^0$, je neenačba~\eqref{eq:1} za $n=0$ izpolnjena.
+Uporabniški sloj predstavlja vstopno točko v okolje Microsoft 365 in vključuje vse odjemalske aplikacije, preko katerih uporabniki dostopajo do storitev platforme.
+Dostop je mogoč preko spletnih brskalnikov, namiznih aplikacij, mobilnih aplikacij in integriranih odjemalcev operacijskega sistema Windows.
 
-Sledi indukcijski korak. S predpostavko, da je neenakost~\eqref{eq:1} veljavna pri nekem naravnem številu $n$, je potrebno pokazati, da je ista neenakost v veljavi tudi pri njegovem nasledniku -- naravnem številu $n+1$. 
-Računajmo.
-\begin{align}
-n+1 & < 2^n + 1       \label{eq:2}\\
-       & \le 2^n + 2^n \label{eq:3}\\
-       & = 2^{n+1}       \nonumber
-\end{align}
-Neenakost~\eqref{eq:2} je posledica indukcijske predpostavke, neenakost~\eqref{eq:3} pa enostavno dejstvo, da je za vsako naravno število $n$ izraz $2^n$ vsaj tako velik kot 1. 
-S tem je dokaz Izreka~\ref{iz:1} zaključen.
-\end{dokaz}
+Med najpogosteje uporabljenimi aplikacijami so Microsoft Word, Excel, PowerPoint, Outlook in Teams.
+Vse aplikacije uporabljajo enotno uporabniško identiteto, kar omogoča poenoteno prijavo in sinhronizacijo podatkov med napravami.
+Komunikacija med odjemalci in storitvami praviloma poteka preko varnih protokolov HTTPS.
 
-Opazimo, da je \LaTeX\ številko izreka podredil številki poglavja.
-Na podoben način se lahko sklicujemo tudi na druge besedilne konstrukte, kot so med drugim poglavja, podpoglavja in plovke, ki jih bomo spoznali v naslednjem poglavju.
+Pomembna značilnost uporabniškega sloja je podpora sodelovanju v realnem času.
+Uporabniki lahko istočasno urejajo dokumente, sodelujejo na videokonferencah in uporabljajo skupne delovne prostore, pri čemer se spremembe sinhronizirajo preko oblačnih storitev platforme Microsoft 365.
 
 
-\chapter{Plovke: slike in tabele}
-\label{ch2}
+\section{Aplikacijski sloj}
 
-Slike in daljše tabele praviloma vključujemo v dokument kot plovke. 
-Pozicija plovke v končnem izdelku ni pogojena s tekom besedila, temveč z izgledom strani. 
-\LaTeX\ bo skušal plovko postaviti samostojno, praviloma na mestu, kjer se pojavi v izvornem besedilu, sicer pa na 
-vrhu strani, na kateri se na takšno plovko prvič sklicujemo. 
-Pri tem pa bo na vsako stran končnega izdelka želel postaviti tudi sorazmerno velik del besedila. 
-V skrajnem primeru, če imamo res preveč plovk na enem mestu besedila, ali če je plovka previsoka, se bo \LaTeX\ odločil za stran popolnoma zapolnjeno s plovkami.
+Aplikacijski sloj vsebuje poslovno logiko posameznih storitev Microsoft 365.
+Med ključne storitve sodijo Exchange Online za elektronsko pošto in koledarje, SharePoint Online za upravljanje dokumentov in intranetne portale, OneDrive for Business za osebno hrambo datotek ter Microsoft Teams za komunikacijo in sodelovanje uporabnikov.
 
-Poleg tega, da na položaj plovke vplivamo s tem, kam jo umestimo v izvorno besedilo, lahko na položaj plovke na posamezni strani prevedenega besedila dodatno vplivamo z opcijami \texttt{here, top} in \texttt{bottom}.
-Zelo velike slike je najbolje postaviti na posebno stran z opcijo \texttt{page}.
-Skaliranje slik po njihovi širini lahko prilagodimo širini strani tako, da kot enoto za dolžino uporabimo kar širino strani, npr. \verb=0.5\textwidth= bo raztegnilo sliko na polovico širine strani.
-Slike lahko po potrebi tudi zavrtimo za 90 stopinj, tako da bodo podrobnosti na sliki lažje berljive in da bo prostor na papirju bolje izkoriščen.
-
-Na vse plovke se moramo v besedilu sklicevati, saj kot beseda pove, plovke plujejo po besedilu in se ne pojavijo točno tam, kjer nastopajo v izvornem besedilu.
-Sklic na plovko v besedilu in sama plovka naj bosta čimbližje skupaj, tako da bralcu ne bo potrebno listati po diplomi. 
-Upoštevajte pa, da se naloge tiska dvostransko in da se hkrati vidi dve strani v dokumentu!
-Na to, kje se bo slika ali druga plovka pojavila v postavljenem besedilu torej najbolj vplivamo tako, da v izvorni kodi plovko premikamo po besedilu nazaj ali naprej!
-
-Tabele ja najbolje oblikovati kar neposredno v \LaTeX u, saj za oblikovanje tabel obstaja zelo fleksibilno okolje \texttt{tabular} (glej tabelo~\ref{tbl:1}).
-Slike pa je po drugi strani  pogosto najla\v zje oblikovati oziroma izdelati z drugimi orodji in programi, rezultate shraniti v formatu {\tt .pdf}  in se v \LaTeX u le sklicevati na ustrezno slikovno datoteko.
-
-Knjižnica \url{https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ} 
-pa omo\-go\-ča risanje raznovrstnih grafov neposredno v okolju \LaTeX .
+Dodatne storitve vključujejo Planner, To Do, Loop, Bookings, Viva Insights in Office Online. Čeprav posamezne storitve uporabljajo lastne podatkovne modele in funkcionalnosti, jih povezuje skupna identitetna infrastruktura ter Microsoft Graph API, ki omogoča enoten dostop do podatkov in funkcionalnosti znotraj celotnega ekosistema Microsoft 365.
+Takšna arhitektura omogoča modularnost, razširljivost in visoko stopnjo integracije med posameznimi storitvami.
 
 
-\section{Formati slik}
+\section{Podatkovni sloj}
 
-Bitne slike, vektorske slike, kakršnekoli slike, z \LaTeX{}om lahko vključimo vse.
-Slika~\ref{pic1} je v formatu {\tt .pdf}.
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.6\textwidth]{pic1.pdf}
-\end{center}
-\caption{Herschelov graf, vektorska grafika.}
-\label{pic1}
+Podatkovni sloj je odgovoren za shranjevanje, obdelavo in zaščito podatkov uporabnikov.
+Podatki so geografsko porazdeljeni med Microsoftove podatkovne centre in replicirani z namenom zagotavljanja visoke razpoložljivosti ter odpornosti proti izpadom storitev.
+Platforma uporablja različne tipe podatkovnih shramb, prilagojene specifičnim potrebam posameznih storitev, kot so poštni predali, dokumenti, koledarski podatki in podatki o sodelovanju uporabnikov.
+
+Pomembne funkcionalnosti podatkovnega sloja vključujejo upravljanje različic dokumentov, varnostno kopiranje podatkov, obnovo po izpadu ter šifriranje podatkov med prenosom in v mirovanju.~\cite{assurance}
+
+\section{Identitetni in varnostni sloj}
+
+Identitetni in varnostni sloj temelji na storitvi Microsoft Entra ID, ki zagotavlja centralizirano upravljanje identitet, avtentikacijo uporabnikov in nadzor dostopa do virov. Platforma podpira enotno prijavo (Single Sign-On), večfaktorsko avtentikacijo (MFA), upravljanje vlog in pravic ter pogojni dostop (Conditional Access).~\cite{entraid}
+
+Microsoft 365 uporablja sodobne varnostne mehanizme, ki vključujejo šifriranje komunikacije, zaščito pred izgubo podatkov (Data Loss Prevention), revizijske dnevnike, zaznavanje varnostnih groženj in storitve Microsoft Defender.
+Arhitektura temelji na načelih modela Zero Trust, ki predpostavlja, da noben uporabnik ali naprava nista samodejno zaupanja vredna, zato se vsak dostop preverja na podlagi identitete, lokacije, stanja naprave in varnostnih pravil organizacije.~\cite{zerotrust}
+
+
+\section{Integracijski in razvojni sloj}
+
+Integracijski in razvojni sloj omogoča povezovanje storitev Microsoft 365 z zunanjimi informacijskimi sistemi ter razvoj lastnih aplikacij.
+Osrednjo vlogo pri tem ima Microsoft Graph, ki predstavlja enotno programsko vstopno točko za dostop do podatkov in storitev znotraj okolja Microsoft 365.~\cite{graphoverview}
+
+Preko Microsoft Graph API je mogoče dostopati do uporabniških profilov, elektronske pošte, koledarjev, datotek, skupin, nalog, komunikacije v Teams in drugih organizacijskih podatkov.
+Avtentikacija aplikacij temelji na standardih OAuth 2.0 in OpenID Connect, razvijalcem pa so na voljo programski kompleti SDK za različne programske jezike.
+Takšna zasnova omogoča razvoj prilagojenih poslovnih rešitev, avtomatizacijo procesov in integracijo Microsoft 365 z obstoječimi informacijskimi sistemi.~\cite{graphapi}
+
+
+\section{Infrastrukturni sloj}
+
+Infrastrukturni sloj temelji na globalni infrastrukturi platforme Microsoft Azure, ki zagotavlja računske vire, omrežne storitve, podatkovne centre in mehanizme za zagotavljanje razpoložljivosti storitev. Microsoft 365 deluje v globalno porazdeljenem okolju, ki omogoča geografsko redundanco podatkov, samodejno obnovo ob izpadih ter prilagajanje zmogljivosti glede na obremenitev sistema.~\cite{assurance}
+
+Takšna arhitektura omogoča zanesljivo delovanje storitev za milijone uporabnikov po vsem svetu ter predstavlja temelj za razširljivost, varnost in neprekinjeno razpoložljivost platforme Microsoft 365.
+
+
+\begin{figure}[H]
+\centering
+
+\begin{tikzpicture}[
+    layer/.style={
+        rectangle,
+        draw=black,
+        rounded corners=3pt,
+        minimum width=13cm,
+        minimum height=1.2cm,
+        align=center,
+        fill=gray!10
+    },
+    font=\small
+]
+
+\node[layer] (user) at (0,0)
+{
+\textbf{UPORABNIŠKI SLOJ}\\
+Outlook, Teams, Word, Excel, spletne in mobilne aplikacije
+};
+
+\node[layer] (app) at (0,-1.8)
+{
+\textbf{APLIKACIJSKI SLOJ}\\
+Microsoft 365 aplikacije in storitve
+};
+
+\node[layer] (data) at (0,-3.6)
+{
+\textbf{PODATKOVNI SLOJ}\\
+OneDrive, SharePoint, Exchange Online, podatkovne storitve
+};
+
+\node[layer] (identity) at (0,-5.4)
+{
+\textbf{IDENTITETNI IN VARNOSTNI SLOJ}\\
+Microsoft Entra ID, MFA, Conditional Access, varnostne politike
+};
+
+\node[layer] (integration) at (0,-7.2)
+{
+\textbf{INTEGRACIJSKI IN RAZVOJNI SLOJ}\\
+Microsoft Graph API, SDK, Power Platform
+};
+
+\node[layer] (infra) at (0,-9)
+{
+\textbf{INFRASTRUKTURNI SLOJ}\\
+Microsoft Azure, podatkovni centri, omrežna infrastruktura
+};
+
+\draw[->, thick] (user) -- (app);
+\draw[->, thick] (app) -- (data);
+\draw[->, thick] (data) -- (identity);
+\draw[->, thick] (identity) -- (integration);
+\draw[->, thick] (integration) -- (infra);
+
+\end{tikzpicture}
+
+\caption{Večslojna arhitektura platforme Microsoft 365}
+\label{fig:m365-arhitektura}
+
 \end{figure}
-Pa res lahko vključimo slike katerihkoli formatov? 
-Žal ne. 
-Programski paket \LaTeX\ lahko uporabljamo v več dialektih. 
-Ukaz {\tt latex} ne mara vključenih slik v formatu Portable Document Format {\tt .pdf}, ukaz {\tt pdflatex} pa ne prebavi slik v Encapsulated Postscript Formatu {\tt .eps}.
-Strnjeno je vključevanje različnih vrst slikovnih datotek prikazano v tabeli~\ref{tbl:1}.
 
-\begin{table}
-\begin{center}
-\begin{tabular}{l|ccc}
-ukaz/format & {\tt .pdf} & {\tt .eps} & ostali formati \\ \hline
-{\tt pdflatex} & da & ne & da \\
-{\tt latex}   & ne & da  & da
-\end{tabular}
-\end{center}
-\caption{Kompatibilnost različnih formatov slikovnih datotek z različnimi dialekti  \LaTeX a.}
-\label{tbl:1}
-\end{table}
+\chapter{Microsoft Graph}
 
-Nasvet? 
-Odločite se za uporabo ukaza {\tt pdflatex}. Vaš izdelek bo brez vmesnih stopenj na voljo v {.pdf} formatu in ga lahko odnesete v vsako tiskarno. 
-Če morate na vsak način vključiti sliko, ki jo imate v {\tt .eps} formatu, jo vnaprej pretvorite v alternativni format, denimo {\tt .pdf}.
+Microsoft Graph predstavlja osrednji programski vmesnik (API) ekosistema Microsoft 365 in identitetne platforme Microsoft Entra.
+Gre za enoten programski model, ki razvijalcem omogoča dostop do podatkov, storitev in funkcionalnosti različnih Microsoftovih oblačnih rešitev prek skupne vstopne točke.
+Namesto uporabe ločenih programskih vmesnikov za posamezne storitve, kot so Outlook, SharePoint, OneDrive ali Microsoft Teams, Microsoft Graph zagotavlja poenoten način dostopa do virov z uporabo skupnega identitetnega sistema, enotnega modela dovoljenj ter standardiziranih podatkovnih struktur.
 
-Včasih se da v okolju za uporabo programskega paketa \LaTeX\ nastaviti na kakšen način bomo prebavljali vhodne dokumente. 
-Spustni meni na Sliki~\ref{pic2} odkriva uporabo \LaTeX{}a v njegovi pdf inkarnaciji --- {\tt pdflatex}.
-\begin{figure}[t]
-\begin{center}
-\includegraphics[width=10cm]{pic2.png}
-\end{center}
-\caption{Kateri dialekt uporabljati?}
-\label{pic2}
-\end{figure}
-Vključena slika~\ref{pic2} je seveda bitna.
+\section{Osnovne značilnosti Microsoft Graph}
 
-Na vse tabele se moramo v besedilu, podobno kot na slike, tudi sklicevati, saj kot plovke v oblikovanem besedilo niso nujno na istem mestu kot v izvornem besedilu.
+Microsoft Graph deluje kot posredni sloj med odjemalskimi aplikacijami in Microsoftovimi oblačnimi storitvami.
+Aplikacije preko vmesnika pošiljajo zahteve za dostop do podatkov in funkcionalnosti posameznih storitev, medtem ko Microsoft Graph skrbi za njihovo usmerjanje, preverjanje pravic dostopa ter vračanje rezultatov v standardizirani obliki.
+Takšen pristop poenostavlja razvoj aplikacij, zmanjšuje kompleksnost integracij in omogoča enotno upravljanje dostopa do različnih storitev znotraj ekosistema Microsoft 365.
 
-
-\subsection{Podnapisi k slikam in tabelam}
-
-Vsaki sliki ali tabeli moramo dodati podnapis, ki na kratko pojasnuje, kaj je na sliki ali tabeli. 
-Če nekdo le prelista diplomsko delo, naj bi že iz slik in njihovih podnapisov lahko na grobo razbral, kakšno temo naloga obravnava.
-
-Če slike povzamemo iz drugih virov, potem se moramo v podnapisu k taki sliki sklicevati na ta vir!
-
-
-\chapter{Struktura strokovnih besedil}
-\label{stroka}
-
-Strokovna besedila imajo ustaljeno strukturo, da bi lahko hitreje in lažje brali in predvsem razumeli taka besedila, saj načeloma vemo vnaprej, 
-kje v besedilu se naj bi nahajale določene informacije.
-
-Najbolj osnovna struktura strokovnega besedila je:
-\begin{description}
-\item[naslov besedila,] ki naj bo sicer kratek, a kljub temu dovolj poveden o vsebini besedila,
-\item[imena avtorjev] so običajno navedena po teži prispevka, prvi avtor je tisti, ki je besedilo dejansko pisal, zadnji pa tisti, ki je raziskavo vodil,
-\item[kontaktni podatki] -- poleg imena in naslova institucije je potreben vsaj naslov elektronske pošte,
-\item[povzetek] je kratko besedilo, ki povsem samostojno povzame vsebino in izpostavi predvsem  glavne rezultate ali zaključke,
-\item[ključne besede] so tudi namenjene iskanju vsebin med množico člankov,
-\item[uvodno poglavje] uvede bralca v tematiko besedila, razloži kaj je namen besedila, predstavi področje o katerem besedilo piše 
-(če temu ni namenjeno v celoti posebno poglavje) ter na kratko predstavi strukturo celotnega besedila,
-\item[poglavja] tvorijo zaokrožene celote, ki se po potrebi še nadalje členijo na podpoglavja, namenjena so recimo opisu orodij, 
-ki smo jih uporabili pri delu, teoretičnim rezultatom ali predstavitvi rezultatov, ki smo jih dosegli,
-\item[zaključek] še enkrat izpostavi glavne rezultate ali ugotovitve, jih primerja z dosedanjimi in morebiti poda tudi ideje za nadaljne delo,
-\item[literatura] je seznam vseh virov, na katere smo se pri svojem delu opirali, oziroma smo se na njih sklicevali v svojem besedilu.
-\end{description}
-
-Naslove poglavij in podpoglavij izbiramo tako, da lahko bralec že pri prelistavanju diplome in branju naslovov
-v grobem ugotovi, kaj je vsebina diplomskega dela.
-
-Strokovna besedila običajno pišemo v prvi osebi množine, v nevtralnem in umirjenem tonu. 
-Uporaba sopomenk ni zaželjena, saj želimo zaradi lažjega razumevanja za iste pojme vseskozi uporabljati iste besede.
-Najpomenbnejše ugotovitve je smiselno večkrat zapisati, na primer v povzetku, uvodu, glavnem delu in zaključku.
-Vse trditve naj bi temeljile bodisi na lastnih ugotovitvah (izpeljavah, preizkusih, testiranjih) ali pa z navajanjem ustreznih virov.
-
-Največ se lahko naučimo s skrbnim branjem dobrih zgledov takih besedil.
-
-
-\chapter{Pogoste napake pri pisanju v slovenščini}  % poglavje dodal Solina
-\label{slo}
-
-V slovenščini moramo paziti  pri uporabi pridevnikov, ki se ne sklanjajo kot so npr. kratice. 
-Pravilno pišemo model CAD in \textbf{ne} CAD model!
-
-Pri sklanjanju tujih imen ne uporabljamo vezajev, pravilno je Applov operacijski sistem in \textbf{ne} Apple-ov.
-
-Pika, klicaj in vprašaj so levostični: pred njimi ni presledka, za njimi pa. 
-Klicajev in vprašajev se v strokovnih besedilih načeloma izogibamo. Oklepaji so desnostični in zaklepaji levostični (takole).
-
-V slovenščini pišemo narekovaje drugače kot v angleščini!   
-Običajno uporabljamo dvojne spodnje-zgornje narekovaje:  \sn{slovenski narekovaji}.
-Za slovenske narekovaje je v tej LaTeXovi predlogi definiran nov ukaz \verb+ \sn{ ... }+.
-
-Vezaj  je levo in desno stičen: \verb=slovensko-angleški slovar= in ga pišemo z enim pomišljajem.
-
-V slovenščini je pred in po pomišljaju presledek, ki ga v LaTeXu pišemo z dvema pomišljajema: \verb=Pozor -- hud pes!=
-V angleščini pa je za razliko pomišljaj levo in desno stičen in se v LaTeXu piše s tremi  pomišljaji: \verb=---=.
-S stičnim pomišljajem pa lahko nadomeščamo predlog od \dots do, denimo pri navajanju strani, npr. preberite strani 7--11 (\verb=7--11=).
-
-
-
-\sn{Pred ki, ko, ker, da, če vejica skače}. To osnovnošolsko pravilo smo v življenju po potrebi uporabljali, dopolnili, morda celo pozabili. 
-Pravilo sicer drži, ampak samo če je izpolnjenih kar nekaj pogojev (npr. da so ti vezniki samostojni, enobesedni, ne gre za vrivek itd.).
-Povedki so med seboj ločeni z vejicami, razen če so zvezani z in, pa, ter, ne–ne, niti–niti, ali, bodisi, oziroma.
-Sicer pa je bolje pisati kratke stavke kot pretirano dolge.
-
-V računalništvu se stalno pojavljajo novi pojmi in nove besede, za katere pogosto še ne obstajajo uveljavljeni slovenski izrazi.
-Kadar smo v dvomih, kateri slovenski izraz je primeren, si lahko pomagamo z Računalniškim slovarčkom~\cite{slovarcek}.
-
-
-
-
-
-\chapter{Koristni nasveti pri pisanju v \LaTeX{u}}   % poglavje dodal Solina
-\label{latex}
-
-Programski paket \LaTeX\ je bil prvotno predstavljen v priročniku~\cite{lamport} in je v resnici nadgradnja sistema \TeX\ avtorja Donalda Knutha~\cite{knuth}, 
-znanega po svojih knjigah o umetnosti programiranja, 
-ter Knuth-Bendixovem algoritmu~\cite{knuth1983simple}.
-
-Različnih implementacij \LaTeX{}a je cela vrsta.
-Za OS X priporočamo TeXShop, za Windows PC pa MikTeX.
-Spletna verzija, ki poenostavi sodelovanje pri pisanju, je Overleaf.
-
-Včasih smo si pri pisanju v \LaTeX{}u  pomagali predvsem s tiskanimi pri\-ro\-čni\-ki, danes pa je enostavneje in hitreje, da ob vsakem problemu za pomoč enostavno povprašamo Google, 
-saj je na spletu cela vrsta forumov za pomoč pri \TeX{}iranju.
-
-\LaTeX\ včasih ne zna deliti slovenskih besed, ki vsebujejo črke s strešicami. 
-Če taka beseda štrli preko desnega roba,  \LaTeX{}u pokažemo, kje lahko tako besedo deli, takole: \verb=ra\-ču\-nal\-ni\-štvo=.
-Katere vrstice štrlijo preko desnega roba, se lahko prepričamo tako, da dokument prevedemo s vključeno opcijo \texttt{draft}: \verb=\documentclass[a4paper, 12pt, draft]{book}=.
-
-
-Predlagamo, da v izvornem besedilu začenjate vsak stavek v novi vrstici, saj \LaTeX\ sam razporeja besede po vrsticah postavljenega besedila. 
-Bo pa zato iskanje po izvornem besedilu in popravljanje veliko hitrejše. 
-Večina sistemov za \TeX{}iranje sicer omogoča s klikanjem enostavno prestopanje  iz prevedenega besedila na ustrezno mesto v izvornem besedilu in obratno.
-
-Boljšo preglednost dosežemo, tako kot pri pisanju programske kode, tudi z izpuščanjem praznih vrstic za boljšo preglednost strukture izvornega besedila.
-
-S pomočjo  okolja \verb=\begin{comment} ... \end{comment}= lahko  hkrati zakomentiramo več vrstic izvornega besedila.
-
-Pri spreminjanju in dodajanju izvornega besedila je najbolje pogosto prevajati, da se sproti prepričamo, če so naši nameni izpolnjeni pravilno.
-
-Kadar besedilo, ki je že bilo napisano z nekim vizualnim urejevalnikom (npr. z Wordom), želimo prenesti v \LaTeX, je tudi najbolje to delati postopoma s posameznimi bloki besedila, 
-tako da lahko morebitne napake hitro identificiramo in odpravimo.
-Za prevajanje Wordovih datotek v \LaTeX\ sicer obstajajo prevajalniki, ki pa običajno ne generirajo tako čisto logično strukturo besedila, kot jo  \LaTeX\ omogoča.
-Hiter in enostaven način prevedbe besedila, ki  zahteva sicer ročne dopolnitve, poteka tako, da besedilo urejeno z vizualnim urejevalnikom najprej shranimo v formatu pdf, 
-nato pa to besedilo uvozimo v urejevalnik, kjer urejamo izvorno besedilo v formatu \LaTeX.
-
-
-
-
-\section{Pisave v \LaTeX u}
-
-V  \LaTeX ovem okolju lahko načeloma uporabljamo poljubne pisave. 
-Izbira poljubne pisave pa ni tako enostavna kot v vizualnih urejevalnikih besedil.
-Posamezne oblikovno medseboj usklajene pisave so običajno združene v družine pisav.
-V \LaTeX u se privzeta družina pisav imenuje Computer Modern,
-kjer so poleg navadnih črk (roman v \LaTeX u) na voljo tudi kurzivne črke (\textit{italic} v \LaTeX u), 
-krepke (\textbf{bold} v \LaTeX u), kapitelke (\textsc{small caps} v \LaTeX u), linearne črke ({\textsf{san serif} v \LaTeX u)                                                                                                                                                                                                                                                                                                                         
-in druge pisave.
-V istem dokumentu zaradi skladnega izleda uporabljamo običajno le pisave ene družine. 
-
-Ko začenjamo uporabljati \LaTeX, je zato najbolj smiselno uporabljati kar privzete pisave, s katerimi je napisan tudi ta dokument.
-Z ustreznimi ukazi  lahko nato preklapljamo med navadnimi, kurzivnimi, krepkimi in drugimi pisavami. 
-Zelo enostavna je tudi izbira velikosti črk.
-\LaTeX\  odlično podpira večjezičnost, tudi v sklopu istega dokumenta, saj obstajajo pisave za praktično vse jezike, tudi take, ki ne uporabljajo latinskih črk.
-
-Za prikaz programske kode se pogosto uporablja pisava, kjer imajo vse črke enako širino, kot so  črke na mehanskem pisalnem stroju ({\texttt{typewriter} v \LaTeX u).
-
-Najbolj priročno okolje za pisanje kratkih izsekov programske kode je okolje \texttt{verbatim}, saj ta ohranja vizualno organizacijo izvornega besedila in ima privzeto pisavo pisalnega stroja.
+Vsi zahtevki se izvajajo preko centralne vstopne točke:
 
 \begin{verbatim}
-for (i = 0; i < 100; i++)
-   for (j = i; j < 10; j++)
-      some_function(i, j);
+https://graph.microsoft.com
+\end{verbatim}
+
+Microsoft Graph temelji na arhitekturnem slogu REST (angl. Representational State Transfer) in za komunikacijo uporablja protokol HTTP.
+Pri dostopu do virov uporablja standardne metode HTTP, med katerimi so najpogosteje uporabljene metoda GET za pridobivanje podatkov, POST za ustvarjanje novih virov, PATCH za posodabljanje obstoječih virov ter DELETE za njihovo odstranjevanje.
+Takšna zasnova omogoča enostavno uporabo v različnih programskih okoljih in platformah.
+
+Podatki se med odjemalcem in strežnikom izmenjujejo v formatu JSON (angl. JavaScript Object Notation), ki predstavlja de facto standard za izmenjavo podatkov v sodobnih spletnih storitvah.
+Zaradi svoje preprostosti, berljivosti in široke podpore omogoča učinkovito integracijo Microsoft Graph API z namiznimi, spletnimi, mobilnimi in strežniškimi aplikacijami.
+
+Pomembna prednost Microsoft Graph je tudi uporaba enotnega podatkovnega modela, ki omogoča dosledno predstavitev uporabnikov, skupin, dokumentov, sporočil, koledarskih dogodkov in drugih poslovnih objektov ne glede na izvorno storitev.
+S tem Microsoft Graph predstavlja temeljni integracijski mehanizem za razvoj sodobnih aplikacij na platformi Microsoft 365.
+
+\section{Arhitektura Microsoft Graph}
+
+Arhitektura Microsoft Graph temelji na več medsebojno povezanih komponentah, ki skupaj omogočajo varen in poenoten dostop do podatkov ter storitev znotraj ekosistema Microsoft 365.
+Med ključne gradnike arhitekture sodijo odjemalske aplikacije, identitetna platforma Microsoft Entra ID, storitev Microsoft Graph kot osrednja vstopna točka za dostop do virov ter posamezne storitve Microsoft 365, ki zagotavljajo poslovne funkcionalnosti in podatke.
+
+Odjemalska aplikacija predstavlja izhodiščno točko komunikacije z Microsoft Graph API. Gre lahko za spletno aplikacijo, enostransko spletno aplikacijo (angl. Single Page Application – SPA), mobilno aplikacijo, namizno aplikacijo ali strežniško rešitev. Pred dostopom do zaščitenih virov mora aplikacija pridobiti ustrezno identiteto in dovoljenja za izvajanje zahtevkov.
+
+Proces avtentikacije in avtorizacije poteka preko storitve Microsoft Entra ID, ki uporablja industrijska standarda OAuth 2.0 in OpenID Connect. Po uspešni prijavi uporabnika ali aplikacije Entra ID izda dostopni žeton (angl. access token), ki vsebuje informacije o identiteti prijavljenega uporabnika, dodeljenih dovoljenjih ter obsegu dostopa do posameznih virov.
+Microsoft Graph uporablja te informacije za preverjanje avtorizacije in nadzor dostopa do podatkov.
+
+Po pridobitvi dostopnega žetona aplikacija pošilja HTTP-zahtevke na Microsoft Graph.
+Ta deluje kot centralizirana vstopna točka oziroma prehodni sloj (angl. gateway), ki sprejema zahtevke, preverja njihovo veljavnost ter jih usmerja do ustreznih storitev znotraj Microsoftovega oblačnega okolja.
+Med najpomembnejše storitve, dostopne preko Microsoft Graph, sodijo Exchange Online, SharePoint Online, OneDrive for Business, Microsoft Teams, Planner, Outlook Calendar in Microsoft Entra ID.
+
+Takšna arhitektura razvijalcem omogoča uporabo enotnega programskega vmesnika za dostop do različnih storitev in podatkovnih virov, ne glede na njihovo dejansko lokacijo ali implementacijo.
+S tem se bistveno zmanjša kompleksnost razvoja integracijskih rešitev, saj aplikacijam ni treba komunicirati z več ločenimi programskimi vmesniki.
+Poleg tega enoten model avtentikacije, dovoljenj in podatkovnih objektov poenostavlja razvoj, vzdrževanje in nadzor nad aplikacijami, ki uporabljajo storitve Microsoft 365.
+
+Pomemben del arhitekture predstavljata tudi podatkovni in varnostni sloj, ki zagotavljata zaščito uporabniških podatkov, šifriranje komunikacije, revizijske sledi ter skladnost z varnostnimi in regulatornimi zahtevami.
+Microsoft Graph tako ne deluje zgolj kot komunikacijski vmesnik, temveč kot osrednji integracijski mehanizem, ki povezuje identitetne storitve, poslovne aplikacije in podatkovne vire znotraj celotnega Microsoftovega oblačnega ekosistema.
+
+
+\section{Avtentikacija in avtorizacija}
+
+Dostop do virov Microsoft Graph je zaščiten z varnostnim modelom, ki temelji na standardih OAuth 2.0 in OpenID Connect.
+Pred uporabo Microsoft Graph mora biti aplikacija registrirana v identitetni platformi Microsoft Entra ID, kjer pridobi enolične identifikatorje in poverilnice, potrebne za avtentikacijo in avtorizacijo. Med najpomembnejše identifikacijske podatke sodijo identifikator aplikacije (angl. Application (Client) ID), identifikator imenika (angl. Directory (Tenant) ID) ter po potrebi skrivni ključ aplikacije (angl. Client Secret) ali digitalno potrdilo.
+
+Postopek dostopa do zaščitenih virov se začne z avtentikacijo uporabnika ali aplikacije pri storitvi Microsoft Entra ID.
+Po uspešno izvedenem postopku avtentikacije Entra ID izda dostopni žeton (angl. access token), ki je običajno zapisan v obliki JSON Web Token (angl. JWT).
+Žeton vsebuje informacije o identiteti uporabnika ali aplikacije, dodeljenih dovoljenjih ter obdobju veljavnosti.
+Pri komunikaciji z Microsoft Graph se dostopni žeton posreduje v HTTP glavi Authorization:
+
+\begin{verbatim}
+Authorization: Bearer <access_token>
+\end{verbatim}
+
+Ob prejemu zahtevka Microsoft Graph preveri veljavnost dostopnega žetona, identiteto uporabnika ali aplikacije, dodeljena dovoljenja ter morebitne varnostne politike organizacije.
+Šele po uspešno izvedenem postopku preverjanja je aplikaciji omogočen dostop do zahtevanih virov.
+
+Model avtorizacije temelji na sistemu dovoljenj (angl. permissions oziroma scopes), ki določajo obseg dostopa do posameznih storitev in podatkov. Microsoft Graph podpira dve osnovni vrsti dovoljenj:
+
+\begin{itemize}
+\item delegirana dovoljenja (angl. Delegated Permissions),
+\item aplikacijska dovoljenja (angl. Application Permissions).
+\end{itemize}
+
+Delegirana dovoljenja se uporabljajo v primerih, ko aplikacija deluje v imenu prijavljenega uporabnika.
+Obseg dostopa je v tem primeru omejen z dovoljenji uporabnika in dovoljenji, ki so bila dodeljena aplikaciji.
+Aplikacija lahko tako dostopa le do virov, do katerih ima dostop tudi prijavljeni uporabnik.
+
+Aplikacijska dovoljenja omogočajo izvajanje operacij brez prisotnosti prijavljenega uporabnika. Takšen način dostopa se najpogosteje uporablja pri strežniških procesih, avtomatizaciji opravil, sinhronizaciji podatkov in drugih ozadnih storitvah. Ker aplikacija v tem primeru dostopa do podatkov neposredno, so aplikacijska dovoljenja praviloma strožje nadzorovana in zahtevajo administratorsko soglasje.
+
+Primeri pogosto uporabljenih dovoljenj v Microsoft Graph so:
+
+\begin{itemize}
+\item User.Read – dostop do osnovnih podatkov prijavljenega uporabnika,
+\item Mail.Send – pošiljanje elektronske pošte v imenu uporabnika,
+\item Calendars.Read – branje koledarskih dogodkov,
+\item Files.ReadWrite – branje in spreminjanje datotek,
+\item Sites.Read.All – branje podatkov spletnih mest SharePoint.
+\end{itemize}
+
+Takšen model omogoča natančno določanje pravic dostopa in predstavlja pomemben mehanizem za zagotavljanje varnosti ter zaščite podatkov znotraj okolja Microsoft 365.
+
+
+\section{Model soglasja}
+
+Microsoft Graph uporablja model soglasja (angl. Consent Framework), ki omogoča nadzor nad dostopom aplikacij do podatkov in storitev znotraj okolja Microsoft 365. Preden lahko aplikacija uporablja določena dovoljenja, mora uporabnik ali skrbnik organizacije izrecno potrditi, da aplikaciji zaupa in ji dovoljuje dostop do zahtevanih virov.
+
+Ob prvi prijavi aplikacija uporabniku prikaže seznam dovoljenj, ki jih potrebuje za svoje delovanje. Uporabnik lahko ta dovoljenja potrdi ali zavrne. Postopek potrditve dovoljenj se imenuje uporabniško soglasje (angl. user consent). Po potrditvi Microsoft Entra ID aplikaciji izda dostopni žeton, ki vsebuje odobrena dovoljenja.
+
+Pri dovoljenjih z višjo stopnjo privilegijev uporabniško soglasje ni dovolj. V takšnih primerih mora dovoljenja odobriti skrbnik organizacije, kar imenujemo administratorsko soglasje (admin consent). Administratorsko soglasje je običajno potrebno za aplikacijska dovoljenja ter za delegirana dovoljenja, ki omogočajo dostop do podatkov drugih uporabnikov ali organizacijskih virov.
+
+Microsoft Entra ID omogoča centralizirano upravljanje soglasij in dovoljenj preko administrativnega portala. Skrbniki lahko pregledujejo, katerim aplikacijam so bila dodeljena dovoljenja, jih po potrebi prekličejo ter določajo politike, ki omejujejo možnost uporabniškega soglasja. Takšen pristop zmanjšuje tveganje nepooblaščenega dostopa do podatkov in omogoča učinkovitejše upravljanje varnosti v organizaciji.
+
+Proces dodeljevanja dovoljenj v okolju Microsoft Graph vključuje naslednje korake:
+
+\begin{enumerate}
+\item registracijo aplikacije v Microsoft Entra ID,
+\item konfiguracijo zahtevanih dovoljenj,
+\item pridobitev soglasja uporabnika ali skrbnika,
+\item pridobitev dostopnega žetona,
+dostop do virov preko Microsoft Graph API.
+\end{enumerate}
+
+Pomembna značilnost modela soglasja je načelo najmanjših privilegijev (angl. Principle of Least Privilege), ki priporoča, da aplikacija zahteva le tista dovoljenja, ki so nujno potrebna za njeno delovanje.
+Takšen pristop zmanjšuje varnostna tveganja in omejuje morebitne posledice zlorabe uporabniških računov ali aplikacijskih poverilnic.
+
+V poslovnih okoljih je model soglasja še posebej pomemben, saj organizacijam omogoča nadzor nad aplikacijami tretjih ponudnikov ter zagotavlja skladnost z internimi varnostnimi politikami in regulatornimi zahtevami.
+Zaradi tega predstavlja pomemben element celotnega varnostnega modela platforme Microsoft 365 in Microsoft Graph.
+
+\section{Viri Microsoft Graph}
+Microsoft Graph omogoča dostop do podatkov in funkcionalnosti različnih storitev Microsoft 365 preko enotne strukture URL-naslovov oziroma endpointov. Vsak endpoint predstavlja določen vir ali zbirko virov, kot so uporabniki, skupine, elektronska pošta, koledarji in datoteke.
+
+Splošna oblika URL-naslova v Microsoft Graph je:
+
+\begin{verbatim}
+https://graph.microsoft.com/{version}/{resource}
+\end{verbatim}
+kjer parameter \textit{version} določa različico API-ja (v1.0 ali beta), parameter \textit{resource} pa predstavlja zahtevani vir.
+
+Med najpogosteje uporabljene vire v Microsoft Graph sodijo:
+
+\begin{itemize}
+    \item \texttt{/users} -- upravljanje uporabnikov in organizacijskih podatkov;
+    \item \texttt{/groups} -- upravljanje skupin in članstev;
+    \item \texttt{/messages} -- dostop do elektronske pošte;
+    \item \texttt{/events} -- upravljanje koledarjev in dogodkov;
+    \item \texttt{/drive} -- dostop do datotek v OneDrive;
+    \item \texttt{/sites} -- dostop do vsebin SharePoint;
+    \item \texttt{/teams} -- upravljanje ekip in komunikacije v Teams.
+\end{itemize}
+
+Primer pridobivanja podatkov o trenutno prijavljenem uporabniku:
+
+\begin{verbatim}
+GET https://graph.microsoft.com/v1.0/me
 \end{verbatim}
 
 
-\chapter{Kaj pa literatura?}
-\label{lit}
-
-Kot smo omenili že v uvodu, je pravi način za citiranje literature uporaba \BibTeX{}a~\cite{bib}. 
-\BibTeX\ zagotovi, da nobene obvezne informacije pri določeni vrsti literature ne izpustimo in da vse informacije o določeni vrsti vira dosledno navajamo na enak način.
-
-Osnovna ideja \BibTeX{a} je, da vse informacije o literaturi zapisujemo v posebno datoteko, v našem primeru je to \texttt{literatura.bib}.
-Vsakemu viru v tej datoteki določimo simbolično ime.
-V  našem primeru je v tej datoteki nekaj najbolj značilnih zvrsti literature, kot so knjige~\cite{lamport}, 
-članki v revijah~\cite{leonardo} in zbornikih konferenc~\cite{poglavje_springer}, 
-spletni viri~\cite{bib,slovarcek,video}, 
-tehnično poročilo~\cite{andersen2012kinect}, 
-diplome~\cite{diploma} itd.
-Diploma~\cite{diploma} iz leta 1990 je bila prva diploma na Fakulteti za elektrotehniko in računalništvo, ki je bila oblikovana z \LaTeX om!
-Novej\v se reference, ki so spletnih straneh svojih založnikov arhivirane v elektronski obliki, imajo določeno \v stevilko DOI: \url{http://dx.doi.org}, ki jo tudi lahko vključimo v izpis literature in omogoča neposredno povezavo do te reference~\cite{Kljun2018}.
-
-Po vsaki spremembi pri sklicu na literaturo moramo najprej prevesti izvorno besedilo s prevajalnikom \LaTeX, nato s prevajalnikom  \BibTeX, ki ustvari datoteko  {\tt vzorec\_dip\_Seminar.bbl}, in nato še dvakrat s prevajalnikom  \LaTeX.
-
-Kako natančno se spisek literature nato izpiše (ali po vrstnem redu sklicevanja, ali po abecedi priimkov prvih avtorjev, ali se imena avtorjev pišejo pred priimki itd.) je odvisno od stilske datoteke.
-V diplomi bomo uporabili osnovno stilsko datoteko \texttt{plain}, oz. \texttt{plainnat}, ki vire razporedi po abecedi.
-Zato je potrebno pri določenih zvrsteh literature, ki nima avtorjev, dodati polje \texttt{key}, ki določi vrstni red vira po abecedi.
-
-Z uporabo \BibTeX{a} v slovenščini je še nekaj nedoslednosti, saj so pomožne besede, ki jih \BibTeX\ sam doda,  kot so \textit{editor},  \textit{pages} in besedica  \textit{and} pred zadnjim avtorjem, 
-če ima vir več avtorjev~\cite{andersen2012kinect}, zapisane v angleščini,
-čeprav smo izbrali opcijo \texttt{slovene} pri paketu \texttt{babel}.
-To nedoslednost je možno popraviti z ročnim urejanjem datoteke {\tt vzorec\_dip\_Seminar.bbl}, 
-kar pa je smiselno šele potem, ko bibliografije v datoteki \texttt{literatura.bib} ne bomo več spreminjali,
-oziroma ne bomo več dodajali novih sklicev na literaturo v izvornem besedilu.
-Vsebino datoteke {\tt vzorec\_dip\_Seminar.bbl} lahko na koncu urejanja tudi vključimo kar v izvorno besedilo diplome, tako da je vso besedilo, vključno z literaturo, zajeto le v eni datoteki.
-
-Ko začenjamo uporabljati \BibTeX\ je lažje, če za urejanje datoteke .bib uporabljamo kar isti urejevalnik kot za urejanje datotek .tex, 
-čeprav obstajajo tudi posebni urejevalniki oziroma programi za delo z \BibTeX om.
-
-Le če se bomo na določen vir v besedilu tudi sklicevali, se bo pojavil tudi v spisku literature.
-Tako je avtomatično zagotovljeno, da se na vsak vir v seznamu literature tudi sklicujemo v besedilu diplome.
-V datoteki \texttt{.bib} imamo sicer lahko veliko več virov za literaturo, kot jih bomo uporabili v diplomi.
-
-Vire v formatu \BibTeX\ lahko enostavno poiščemo in prekopiramo iz spletnih strani založnikov ali različnih akademskih spletnih portalov za iskanje znanstvene literature v našo datoteko \texttt{.bib}.
-Izvoz  referenc v Google učenjaku še dodatno poenostavimo, če v nastavitvah izberemo \BibTeX\ kot želeni format za izvoz navedb.
-Navedbe, ki jih na tak način prekopiramo, pa moramo pred uporabo vseeno preveriti, saj so taki navedki pogosto generirani povsem avtomatično in lahko vsebujejo napačne ali nepopolne podatke.
-
-Pri sklicevanju na literaturo na koncu stavka moramo paziti, da je pika po ukazu \verb=\cite{ }=.
-Da \LaTeX\ ne bi delil vrstico ravno tako, da bi sklic na literaturo v oglatih oklepajih začel novo vrstico, lahko pred sklicem na literaturo dodamo nedeljiv presledek: \verb=~\cite{ }=.
+Microsoft Graph podpira tudi uporabo poizvedbenih parametrov OData, ki omogočajo filtriranje, razvrščanje in omejevanje rezultatov. Med najpogosteje uporabljenimi parametri so \texttt{select}, \texttt{filter}, \texttt{expand}, \texttt{orderby} in \texttt{top}.
 
 
-\section{Izbiranje virov za spisek literature}
+Primer pridobivanja izbranih atributov uporabnika:
 
-Dandanes  se skoraj  vsi pri iskanju informacij vedno najprej lotimo iskanja preko svetovnega spleta.
-Rezultati takega iskanja pa so pogosto spletne strani, ki danes obstajajo, jutri pa jih morda ne bo več, ali pa vsaj ne v taki obliki, kot smo jo prebrali.
-Smisel navajanja literature pa je, da tudi po dolgih letih nekdo, ki bo bral vašo diplomo, lahko poišče vire, ki jih navajate v diplomi.
-Taki viri pa so predvsem članki v znanstvenih revijah, ki se arhivirajo v knjižnicah, založniki teh revij pa večinoma omogočajo tudi elektronski dostop do arhiva vseh njihovih člankov.
-
-Znanstveni rezultati, ki so objavljeni v obliki recenziranih člankov, bodisi v konferenčnih zbornikih, še bolje pa v znanstvenih revijah, so veliko bolj izčiščen in zanesljiv vir informacij, saj
-so taki članki šli skozi recenzijski postopek.
-Zato na svetovnem spletu začenjamo iskati vire za strokovna besedila predvsem preko akademskih spletnih portalov, kot so npr. Google učenjak, Research Gate ali Academia, saj
-so na teh portalih rezultati iskanja le akademske publikacije.
-Če je za dostop do nekega članka potrebno plačati, se obrnemo za pomoč in dodatne informacije na  našo knjižnico.
-
-Če res ne gre drugače, pa je pomembno, da pri sklicevanju na spletni vir, vedno navedemo tudi datum, kdaj smo dostopali do tega vira.
+\begin{verbatim}
+GET https://graph.microsoft.com/v1.0/me?$select=id,displayName,mail
+\end{verbatim}
 
 
+Enotna struktura endpointov in skupni podatkovni model predstavljata eno izmed ključnih prednosti Microsoft Graph, saj razvijalcem omogočata dostop do različnih storitev Microsoft 365 preko enotnega programskega vmesnika ter poenostavljata razvoj integracijskih rešitev.
 
-\chapter{Sistem STUDIS in PDF/A}
-\label{PDF}
 
-Elektronsko verzijo diplome moramo oddati preko sistema STUDIS v formatu PDF/A ~\cite{pdfa}.
-Natančneje v formatu PDF/A-1b. 
+\section{Ključne storitve Microsoft Graph}
 
-\LaTeX\ in omenjeni format imata še nekaj težav s sobivanjem. 
-Paket \texttt{pdfx.sty}, ki naj bi \LaTeX{u} omogočal podporo formatu PDF/A ne deluje v skladu s pričakovanji. 
-Ta predloga delno ustreza formatu, vsekakor dovolj, da jo študentski informacijski sistem sprejme. 
-Znaten del rešitve je prispeval Damjan Cvetan.
+Microsoft Graph omogoča dostop do podatkov in funkcionalnosti številnih storitev znotraj ekosistema Microsoft 365.
+Preko enotnega programskega vmesnika lahko aplikacije uporabljajo identitetne storitve, elektronsko pošto, koledarje, dokumentne repozitorije, komunikacijska orodja in druge poslovne vire.
+Takšen pristop poenostavlja razvoj informacijskih sistemov, saj razvijalcem omogoča uporabo enotnega modela avtentikacije, avtorizacije in dostopa do podatkov ne glede na storitev, s katero komunicirajo.
 
-V predlogi, poleg izvornega  dokumenta \texttt{.tex} in vloženih slik \texttt{pic1.pdf} in \texttt{pic2.png}, 
-potrebujemo še predlogo datoteke z metapodatki \texttt{pdfa-1b.xmp} in datoteko z barvnim profilom \texttt{sRGBIEC1966-2.1.icm}.
+V nadaljevanju so predstavljene najpomembnejše storitve in podatkovni viri, ki so dostopni preko Microsoft Graph, ter njihove značilnosti z vidika razvoja poslovnih aplikacij in informacijskih sistemov.
+\section{Integracija z Microsoft 365 storitvami}
+
+Ena izmed ključnih prednosti Microsoft Graph je možnost dostopa do različnih storitev Microsoft 365 preko enotnega programskega vmesnika in skupnega podatkovnega modela. Namesto uporabe ločenih API-jev za posamezne storitve lahko aplikacije uporabljajo enotne REST končne točke, skupen sistem avtorizacije na osnovi OAuth 2.0 ter standardizirane podatkovne objekte. Takšna arhitektura poenostavi razvoj integracij, zmanjšuje kompleksnost upravljanja dostopov in omogoča učinkovito povezovanje podatkov med različnimi storitvami znotraj ekosistema Microsoft 365.
+
+\subsection{Uporabniki}
+
+Vir \texttt{User} predstavlja osrednji objekt identitetnega sistema Microsoft Entra ID in omogoča dostop do podatkov o uporabnikih organizacije. Vsak uporabnik je predstavljen kot samostojen objekt z enoličnim identifikatorjem (\texttt{id}), ki ostane nespremenjen skozi celoten življenjski cikel računa.
+
+Microsoft Graph omogoča pridobivanje osnovnih atributov uporabnika, kot so ime, elektronski naslov, delovno mesto, oddelek, telefonske številke in lokacija. Poleg osnovnih podatkov so dostopni tudi organizacijski odnosi, kot sta nadrejeni uporabnik (\texttt{manager}) in seznam podrejenih zaposlenih (\texttt{directReports}), kar omogoča gradnjo organizacijskih diagramov in sistemov za upravljanje kadrovskih procesov.
+
+Pomembna funkcionalnost je dostop do uporabniških virov preko relacijskih povezav. Iz uporabniškega objekta je mogoče neposredno dostopati do poštnega predala, koledarjev, datotek v OneDrive, članstev v skupinah, ekip Teams in drugih povezanih storitev. Primer takšne povezave je končna točka:
+
+\begin{verbatim}
+/users/{id}/drive
+\end{verbatim}
+
+ki omogoča dostop do uporabnikovega prostora OneDrive.
+
+Microsoft Graph podpira tudi upravljanje življenjskega cikla uporabnikov. Administratorji lahko ustvarjajo nove račune, spreminjajo njihove lastnosti, dodeljujejo licence, upravljajo članstva v skupinah ter izvajajo postopke obnovitve ali trajnega brisanja računov. Za večje organizacije je pomembna tudi podpora za množične operacije in sinhronizacijo identitet z lokalnimi imeniki.
+
+\subsection{Skupine}
+
+Vir \texttt{Group} predstavlja logično združevanje uporabnikov in naprav ter je eden najpomembnejših mehanizmov za upravljanje dostopa v okolju Microsoft 365. Microsoft Graph podpira več vrst skupin, med katerimi sta najpogosteje uporabljeni Microsoft 365 skupina in varnostna skupina (*Security Group*).
+
+Microsoft 365 skupina poleg članstva samodejno zagotavlja tudi skupni poštni predal, SharePoint mesto, koledar, OneNote beležnico in druge povezane vire. Zaradi tega predstavlja temelj sodelovalnih okolij v storitvah Teams, Planner in Outlook.
+
+Microsoft Graph omogoča upravljanje članov skupin preko relacijskih virov:
+
+\begin{verbatim}
+/groups/{id}/members
+/groups/{id}/owners
+\end{verbatim}
+
+Podprto je dodajanje in odstranjevanje članov, pridobivanje informacij o lastnikih skupine ter upravljanje dinamičnega članstva. Dinamične skupine uporabljajo pravila na osnovi atributov uporabnikov, kar omogoča avtomatsko vključevanje ali izključevanje članov brez ročnega posredovanja administratorjev.
+
+Pri večjih sistemih je pomembna tudi možnost pridobivanja transitivega članstva, kjer Microsoft Graph vrne vse skupine, v katere je uporabnik vključen neposredno ali posredno preko ugnezdenih skupin.
+
+\subsection{Datoteke in dokumenti}
+
+Microsoft Graph omogoča enoten dostop do dokumentov v storitvah OneDrive for Business in SharePoint Online preko virov \texttt{Drive} in \texttt{DriveItem}. Objekt \texttt{Drive} predstavlja logični dokumentni repozitorij, medtem ko \texttt{DriveItem} predstavlja posamezno datoteko ali mapo.
+
+Datoteke je mogoče pridobivati preko različnih identifikatorjev, poti ali URL naslovov. Primer dostopa do vsebine datoteke:
+
+\begin{verbatim}
+/drives/{drive-id}/items/{item-id}/content
+\end{verbatim}
+
+Microsoft Graph podpira nalaganje datotek različnih velikosti. Pri manjših datotekah se uporablja enostaven prenos preko ene HTTP zahteve, medtem ko se za večje datoteke uporablja mehanizem nalaganja po segmentih (angl. Upload Session), ki omogoča nadaljevanje prenosa v primeru prekinitve povezave.
+
+Pomembna funkcionalnost je upravljanje dovoljenj in povezav za skupno rabo. Aplikacije lahko ustvarjajo časovno omejene povezave, določajo pravice za ogled ali urejanje dokumentov ter spremljajo dostop do datotek. Poleg tega Microsoft Graph omogoča spremljanje sprememb preko mehanizma delta poizvedb (angl. Delta Query), kar je posebej uporabno pri sinhronizaciji dokumentov med sistemi.
+
+\subsection{Koledarji in dogodki}
+
+Koledarski del Microsoft Graph temelji na virih \texttt{Calendar}, \texttt{Event} in \texttt{CalendarView}. API omogoča popoln dostop do Outlook koledarjev ter upravljanje dogodkov, sestankov in rezervacij virov.
+
+Dogodki vsebujejo številne atribute, med katerimi so čas začetka in konca, seznam udeležencev, lokacija, opis, ponavljajoči se vzorci ter informacije o spletnih srečanjih. Microsoft Graph podpira ustvarjanje dogodkov z integracijo Microsoft Teams, pri čemer se samodejno ustvari povezava za videokonferenčni sestanek.
+
+Posebej uporabna funkcionalnost je metoda \texttt{findMeetingTimes}, ki analizira razpoložljivost vseh udeležencev in predlaga optimalne termine za sestanek. Pri tem sistem upošteva delovni čas uporabnikov, časovne pasove, obstoječe rezervacije in druge omejitve.
+
+Za spremljanje sprememb koledarjev je mogoče uporabiti naročnine (angl. Subscriptions) in spletne kljuke (angl. Webhooks), ki aplikacijo obvestijo ob ustvarjanju, spremembi ali brisanju dogodkov.
+
+\subsection{Excel in poslovni podatki}
+
+Microsoft Graph vključuje namenski Excel API, ki omogoča neposredno delo z delovnimi zvezki brez uporabe namizne aplikacije Excel. Delovni zvezek je predstavljen kot hierarhična struktura objektov, ki vključuje delovne liste, tabele, obsege celic, grafikone in vrtilne tabele.
+
+Dostop do podatkov poteka preko virov, kot so:
+
+\begin{verbatim}
+/workbook/worksheets
+/workbook/tables
+/workbook/range
+\end{verbatim}
+
+API omogoča branje in zapisovanje vrednosti celic, izvajanje formul, osveževanje podatkovnih povezav ter upravljanje struktur tabel.
+Posebna prednost je možnost izvajanja operacij neposredno na strežniški strani, kar zmanjšuje potrebo po prenosu celotnih datotek.
+
+Za zagotavljanje konsistentnosti podatkov Microsoft Graph podpira koncept sej (angl. Workbook Session), ki omogoča izvajanje več operacij nad delovnim zvezkom znotraj istega konteksta. Takšen pristop izboljša zmogljivost in preprečuje konflikte pri sočasnem dostopu več uporabnikov.
+
+Excel API je posebej uporaben pri avtomatizaciji poročanja, pripravi finančnih analiz, integraciji poslovnih podatkov in gradnji analitičnih rešitev, kjer Excel predstavlja podatkovni vir ali uporabniški vmesnik za poslovne uporabnike.
+
+\subsection{OneNote}
+
+OneNote API omogoča dostop do beležnic, odsekov in posameznih strani znotraj storitve Microsoft OneNote. Podatkovni model temelji na hierarhiji objektov \texttt{Notebook}, \texttt{Section} in \texttt{Page}, kar omogoča strukturirano organizacijo vsebin.
+
+Posebnost OneNote API-ja je uporaba HTML vsebine za predstavitev strani. Pri ustvarjanju ali posodabljanju zapiskov aplikacija pošilja HTML dokumente, ki lahko vsebujejo oblikovano besedilo, slike, povezave, sezname in druge elemente. Takšen pristop omogoča bogato predstavitev vsebine brez potrebe po uporabi lastnega formata dokumentov.
+
+Microsoft Graph omogoča tudi iskanje po vsebini beležnic, pridobivanje metapodatkov ter upravljanje prilog. Zaradi teh lastnosti je OneNote primeren za implementacijo sistemov za upravljanje znanja, projektne dokumentacije in zapisnikov sestankov.
+
+\subsection{Microsoft Teams}
+
+Microsoft Teams predstavlja osrednjo platformo za sodelovanje in komunikacijo v okolju Microsoft 365. Microsoft Graph omogoča dostop do vseh ključnih komponent sistema Teams, vključno z ekipami, kanali, člani, sporočili, datotekami in spletnimi sestanki.
+
+Podatkovni model temelji na virih \texttt{Team}, \texttt{Channel}, \texttt{Chat} in \texttt{OnlineMeeting}. Ker je vsaka ekipa povezana z Microsoft 365 skupino, so vsi povezani viri dostopni preko skupnega identitetnega modela.
+
+Microsoft Graph omogoča ustvarjanje ekip in kanalov, upravljanje članstva ter dostop do pogovorov. Za avtomatizacijo poslovnih procesov je posebej pomembna možnost pošiljanja sporočil v kanale in klepete ter integracija z aplikacijami in roboti.
+
+Pri spletnih sestankih API omogoča ustvarjanje, načrtovanje in spremljanje srečanj Teams. Razvijalci lahko pridobivajo informacije o udeležencih, času trajanja sestankov in drugih metapodatkih, kar omogoča razvoj naprednih rešitev za upravljanje komunikacije in sodelovanja.
+
+Zaradi tesne povezanosti s SharePointom, Outlookom, OneDriveom in Microsoft Entra ID predstavlja Teams pomembno integracijsko točko za razvoj poslovnih aplikacij, ki združujejo komunikacijo, dokumente in poslovne procese v enotnem uporabniškem okolju.
+
+
+
+\chapter{Implementacija aplikacije}
+
+Za praktični del diplomske naloge je bila razvita demonstracijska enostranska spletna aplikacija (angl. Single Page Application – SPA), katere namen je prikaz uporabe Microsoft Graph API pri razvoju sodobnih informacijskih sistemov. Aplikacija uporabnikom omogoča prijavo z Microsoft računom, dostop do izbranih storitev okolja Microsoft 365 ter delo z dokumenti in elektronsko pošto. Pri implementaciji je bil Microsoft Graph uporabljen kot osrednji integracijski mehanizem za komunikacijo z oblačnimi storitvami Microsoft 365.
+
+\section{Arhitektura rešitve}
+
+Pri načrtovanju aplikacije je bila izbrana arhitektura SPA, ki omogoča izvajanje večine logike na odjemalski strani in neposredno komunikacijo z Microsoft Graph API. Takšen pristop zmanjšuje potrebo po dodatnem strežniškem sloju, poenostavlja implementacijo in omogoča hitrejši razvoj prototipa.
+
+Uporabniški vmesnik je bil razvit z uporabo knjižnice React in programskega jezika TypeScript, razvojno okolje pa temelji na orodju Vite. Za avtentikacijo uporabnikov in pridobivanje dostopnih žetonov je bila uporabljena knjižnica Microsoft Authentication Library (MSAL), ki zagotavlja podporo za integracijo z Microsoft Entra ID.
+
+Arhitektura rešitve temelji na neposredni komunikaciji med odjemalsko aplikacijo in storitvami Microsoft 365 preko Microsoft Graph API. Uporabnik se najprej avtenticira v sistem Microsoft Entra ID, nato pa aplikacija pridobi dostopni žeton, ki se uporablja za izvajanje zahtevkov do storitev Microsoft 365.
+
+\section{Avtentikacija in avtorizacija}
+
+Za prijavo uporabnikov je bila uporabljena identitetna platforma Microsoft Entra ID. Aplikacija je bila registrirana v administrativnem portalu Microsoft Entra, kjer so bili konfigurirani identifikatorji aplikacije, preusmeritveni naslovi in zahtevana dovoljenja.
+
+Postopek prijave temelji na protokolu OAuth 2.0 Authorization Code Flow s podporo za mehanizem PKCE (angl. Proof Key for Code Exchange), ki predstavlja priporočeni pristop za enostranske spletne aplikacije. Takšna zasnova omogoča varno pridobivanje dostopnih žetonov brez potrebe po shranjevanju občutljivih podatkov na odjemalski strani.
+
+Za delovanje aplikacije so bila uporabljena dovoljenja za dostop do uporabniškega profila, pošiljanje elektronske pošte ter delo z dokumenti v storitvah OneDrive in SharePoint.
+
+\subsection{Integracija z Microsoft Graph}
+
+Microsoft Graph predstavlja osrednji komunikacijski sloj aplikacije in omogoča dostop do različnih storitev okolja Microsoft 365 preko enotnega programskega vmesnika. 
+V okviru implementacije je bil uporabljen za pridobivanje podatkov o prijavljenem uporabniku, dostop do dokumentov, ustvarjanje povezav za skupno rabo ter pošiljanje elektronske pošte.
+
+Komunikacija z Microsoft Graph poteka preko REST zahtevkov, pri čemer se podatki izmenjujejo v formatu JSON. Takšen pristop omogoča enostavno integracijo z različnimi storitvami Microsoft 365 ter zmanjšuje kompleksnost razvoja aplikacije.
+
+\section{Delo z dokumenti}
+
+Ena izmed osrednjih funkcionalnosti aplikacije je delo z dokumenti, shranjenimi v storitvah OneDrive in SharePoint. Uporabnik lahko izbere predlogo dokumenta, na podlagi katere aplikacija ustvari novo kopijo dokumenta in jo shrani v uporabnikov prostor za hrambo datotek.
+
+Posebna pozornost je bila namenjena delu z Excel dokumenti.
+Microsoft Graph omogoča neposreden dostop do strukture Excelovih delovnih zvezkov, delovnih listov in celic, zato je mogoče podatke pridobivati in obdelovati brez prenosa celotne datoteke. Takšen pristop omogoča učinkovito ekstrakcijo vsebine in njeno pretvorbo v obliko, primerno za nadaljnjo obdelavo v informacijskem sistemu.
+
+Pri dokumentih Word in PowerPoint Microsoft Graph omogoča predvsem upravljanje datotek in njihovih metapodatkov, medtem ko je za podrobnejšo obdelavo vsebine potrebno uporabiti dodatne knjižnice za delo z dokumenti Office Open XML.
+
+\section{Pošiljanje elektronske pošte}
+
+Aplikacija omogoča pošiljanje elektronskih sporočil preko storitve Outlook.
+Po pripravi dokumenta lahko uporabnik vnese prejemnike, zadevo in vsebino sporočila, nato pa aplikacija preko Microsoft Graph izvede pošiljanje elektronske pošte.
+
+Sporočilom je mogoče priložiti dokumente ali vključiti povezave do datotek, shranjenih v storitvah OneDrive oziroma SharePoint.
+Takšna funkcionalnost omogoča učinkovito povezovanje dokumentnega sistema in elektronske komunikacije znotraj enotnega uporabniškega okolja.
+
+\section{Ocena rešitve}
+
+Razvita aplikacija prikazuje praktično uporabo Microsoft Graph API pri razvoju sodobnih spletnih informacijskih sistemov. Uporaba Microsoft Entra ID za upravljanje identitet, Microsoft Graph za dostop do storitev ter obstoječe infrastrukture Microsoft 365 omogoča razvoj rešitev brez potrebe po lastnih strežnikih za upravljanje uporabnikov, dokumentov ali elektronske pošte.
+
+Rezultati implementacije potrjujejo, da Microsoft Graph predstavlja učinkovito platformo za integracijo različnih storitev Microsoft 365 ter omogoča razvoj aplikacij, ki združujejo upravljanje dokumentov, komunikacijo in uporabniške podatke v enotnem informacijskem sistemu.
 
 
 
 
 \chapter{Sklepne ugotovitve}
 
-Uporaba \LaTeX{a} in \BibTeX{a} je v okviru Diplomskega seminarja \textbf{obvezna}!
-Izbira \LaTeX\ ali ne \LaTeX\ pri pisanju dejanske diplomske naloge pa je pre\-pu\-šče\-na dogovoru med vami in vašim mentorjem.
 
-Res je, da so prvi koraki v \LaTeX{}u težavni. 
-Ta dokument naj vam služi kot začetna opora pri hoji.
-Pri kakršnihkoli nadaljnih vprašanjih ali napakah pa svetujem uporabo Googla, saj je spletnih strani za pomoč pri odpravljanju težav pri uporabi \LaTeX{}a ogromno.
-
-Preden diplomo oddate na sistemu STUDIS, še enkrat preverite, če so slovenske besede, ki vsebujejo črke s strešicami,  pravilno deljene.
-Poravnavo po vrsticah pa kontrolirajte tako, da izvorno datoteko prevedete z opcijo \texttt{draft}, kar vam pokaže predolge vrstice.
 
 
 \cleardoublepage
