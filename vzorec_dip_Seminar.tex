@@ -47,7 +47,8 @@
 \usepackage{soul}       % dodal Solina
 \usepackage[numbers]{natbib}  % dodal Solina
 \usepackage{tikz}
-%\usepackage{float}
+\usepackage{float}
+\usepackage{longtable}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	DIPLOMA INFO
@@ -279,9 +280,9 @@ Na tem mestu zapišite, komu se zahvaljujete za izdelavo diplomske naloge. Pazit
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % posvetilo, če sama zahvala ne zadošča :-)
-\thispagestyle{empty}\mbox{}{\vskip0.20\textheight}\mbox{}\hfill\begin{minipage}{0.55\textwidth}%
-Svoji dragi Alenčici.
-\normalfont\end{minipage}
+% \thispagestyle{empty}\mbox{}{\vskip0.20\textheight}\mbox{}\hfill\begin{minipage}{0.55\textwidth}%
+% Svoji dragi Alenčici.
+% \normalfont\end{minipage}
 
 % prazna stran
 \clearemptydoublepage
@@ -397,11 +398,9 @@ Aplikacija bo komunicirala z vmesnikom Microsoft Graph API ter omogočala dostop
 
 Diplomska naloga je razdeljena na več poglavij.
 V drugem poglavju je predstavljena platforma Microsoft 365 in njene ključne storitve.
-Tretje poglavje obravnava Microsoft Graph API, njegove osnovne značilnosti, strukturo zahtevkov in področja uporabe.
-V četrtem poglavju so predstavljeni varnostni mehanizmi, avtentikacija, avtorizacija in model dovoljenj.
-Peto poglavje opisuje načrtovanje in razvoj demonstracijske enostranske aplikacije.
-V šestem poglavju je predstavljena analiza rezultatov, prednosti in omejitve izbrane rešitve.
-Zadnje poglavje povzema ugotovitve naloge in podaja možnosti za nadaljnje delo.
+Tretje poglavje obravnava Microsoft Graph API, njegove osnovne značilnosti, strukturo zahtevkov, področja uporabe, varnostni mehanizmi, avtentikacija, avtorizacija in model dovoljenj.
+Četrto poglavje opisuje načrtovanje in razvoj demonstracijske enostranske aplikacije.
+V petem poglavju je predstavljena analiza rezultatov, prednosti in omejitve izbrane rešitve, ugotovitve naloge ter podaja možnosti za nadaljnje delo.
 
 
 \chapter{Arhitektura platforme Microsoft 365}
@@ -458,9 +457,9 @@ Pomembne funkcionalnosti podatkovnega sloja vključujejo upravljanje različic d
 
 \section{Identitetni in varnostni sloj}
 
-Identitetni in varnostni sloj temelji na storitvi Microsoft Entra ID, ki zagotavlja centralizirano upravljanje identitet, avtentikacijo uporabnikov in nadzor dostopa do virov. Platforma podpira enotno prijavo (Single Sign-On), večfaktorsko avtentikacijo (MFA), upravljanje vlog in pravic ter pogojni dostop (Conditional Access).~\cite{entraid}
+Identitetni in varnostni sloj temelji na storitvi Microsoft Entra ID, ki zagotavlja centralizirano upravljanje identitet, avtentikacijo uporabnikov in nadzor dostopa do virov. Platforma podpira enotno prijavo (angl. Single Sign-On), večfaktorsko avtentikacijo (angl. Multi-Factor Authentication), upravljanje vlog in pravic ter pogojni dostop (angl. Conditional Access).~\cite{entraid}
 
-Microsoft 365 uporablja sodobne varnostne mehanizme, ki vključujejo šifriranje komunikacije, zaščito pred izgubo podatkov (Data Loss Prevention), revizijske dnevnike, zaznavanje varnostnih groženj in storitve Microsoft Defender.
+Microsoft 365 uporablja sodobne varnostne mehanizme, ki vključujejo šifriranje komunikacije, zaščito pred izgubo podatkov (angl. Data Loss Prevention), revizijske dnevnike, zaznavanje varnostnih groženj in storitve Microsoft Defender.
 Arhitektura temelji na načelih modela Zero Trust, ki predpostavlja, da noben uporabnik ali naprava nista samodejno zaupanja vredna, zato se vsak dostop preverja na podlagi identitete, lokacije, stanja naprave in varnostnih pravil organizacije.~\cite{zerotrust}
 
 
@@ -645,7 +644,7 @@ Microsoft Graph uporablja model soglasja (angl. Consent Framework), ki omogoča 
 
 Ob prvi prijavi aplikacija uporabniku prikaže seznam dovoljenj, ki jih potrebuje za svoje delovanje. Uporabnik lahko ta dovoljenja potrdi ali zavrne. Postopek potrditve dovoljenj se imenuje uporabniško soglasje (angl. user consent). Po potrditvi Microsoft Entra ID aplikaciji izda dostopni žeton, ki vsebuje odobrena dovoljenja.
 
-Pri dovoljenjih z višjo stopnjo privilegijev uporabniško soglasje ni dovolj. V takšnih primerih mora dovoljenja odobriti skrbnik organizacije, kar imenujemo administratorsko soglasje (admin consent). Administratorsko soglasje je običajno potrebno za aplikacijska dovoljenja ter za delegirana dovoljenja, ki omogočajo dostop do podatkov drugih uporabnikov ali organizacijskih virov.
+Pri dovoljenjih z višjo stopnjo privilegijev uporabniško soglasje ni dovolj. V takšnih primerih mora dovoljenja odobriti skrbnik organizacije, kar imenujemo administratorsko soglasje (angl. admin consent). Administratorsko soglasje je običajno potrebno za aplikacijska dovoljenja ter za delegirana dovoljenja, ki omogočajo dostop do podatkov drugih uporabnikov ali organizacijskih virov.
 
 Microsoft Entra ID omogoča centralizirano upravljanje soglasij in dovoljenj preko administrativnega portala. Skrbniki lahko pregledujejo, katerim aplikacijam so bila dodeljena dovoljenja, jih po potrebi prekličejo ter določajo politike, ki omejujejo možnost uporabniškega soglasja. Takšen pristop zmanjšuje tveganje nepooblaščenega dostopa do podatkov in omogoča učinkovitejše upravljanje varnosti v organizaciji.
 
@@ -665,7 +664,7 @@ Takšen pristop zmanjšuje varnostna tveganja in omejuje morebitne posledice zlo
 V poslovnih okoljih je model soglasja še posebej pomemben, saj organizacijam omogoča nadzor nad aplikacijami tretjih ponudnikov ter zagotavlja skladnost z internimi varnostnimi politikami in regulatornimi zahtevami.
 Zaradi tega predstavlja pomemben element celotnega varnostnega modela platforme Microsoft 365 in Microsoft Graph.
 
-\section{Viri Microsoft Graph}
+\section{Endpointi Microsoft Graph}
 Microsoft Graph omogoča dostop do podatkov in funkcionalnosti različnih storitev Microsoft 365 preko enotne strukture URL-naslovov oziroma endpointov. Vsak endpoint predstavlja določen vir ali zbirko virov, kot so uporabniki, skupine, elektronska pošta, koledarji in datoteke.
 
 Splošna oblika URL-naslova v Microsoft Graph je:
@@ -694,7 +693,7 @@ GET https://graph.microsoft.com/v1.0/me
 \end{verbatim}
 
 
-Microsoft Graph podpira tudi uporabo poizvedbenih parametrov OData, ki omogočajo filtriranje, razvrščanje in omejevanje rezultatov. Med najpogosteje uporabljenimi parametri so \texttt{select}, \texttt{filter}, \texttt{expand}, \texttt{orderby} in \texttt{top}.
+Microsoft Graph podpira tudi uporabo poizvedbenih parametrov OData, ki omogočajo filtriranje, razvrščanje in omejevanje rezultatov. Med najpogosteje uporabljenimi parametri so \texttt{\$select}, \texttt{\$filter}, \texttt{\$expand}, \texttt{\$orderby} in \texttt{\$top}.
 
 
 Primer pridobivanja izbranih atributov uporabnika:
@@ -713,10 +712,9 @@ Microsoft Graph omogoča dostop do podatkov in funkcionalnosti številnih storit
 Preko enotnega programskega vmesnika lahko aplikacije uporabljajo identitetne storitve, elektronsko pošto, koledarje, dokumentne repozitorije, komunikacijska orodja in druge poslovne vire.
 Takšen pristop poenostavlja razvoj informacijskih sistemov, saj razvijalcem omogoča uporabo enotnega modela avtentikacije, avtorizacije in dostopa do podatkov ne glede na storitev, s katero komunicirajo.
 
-V nadaljevanju so predstavljene najpomembnejše storitve in podatkovni viri, ki so dostopni preko Microsoft Graph, ter njihove značilnosti z vidika razvoja poslovnih aplikacij in informacijskih sistemov.
-\section{Integracija z Microsoft 365 storitvami}
-
 Ena izmed ključnih prednosti Microsoft Graph je možnost dostopa do različnih storitev Microsoft 365 preko enotnega programskega vmesnika in skupnega podatkovnega modela. Namesto uporabe ločenih API-jev za posamezne storitve lahko aplikacije uporabljajo enotne REST končne točke, skupen sistem avtorizacije na osnovi OAuth 2.0 ter standardizirane podatkovne objekte. Takšna arhitektura poenostavi razvoj integracij, zmanjšuje kompleksnost upravljanja dostopov in omogoča učinkovito povezovanje podatkov med različnimi storitvami znotraj ekosistema Microsoft 365.
+
+V nadaljevanju so predstavljene najpomembnejše storitve in endpointi, ki so dostopni preko Microsoft Graph, ter njihove značilnosti z vidika razvoja poslovnih aplikacij in informacijskih sistemov.
 
 \subsection{Uporabniki}
 
@@ -724,19 +722,13 @@ Vir \texttt{User} predstavlja osrednji objekt identitetnega sistema Microsoft En
 
 Microsoft Graph omogoča pridobivanje osnovnih atributov uporabnika, kot so ime, elektronski naslov, delovno mesto, oddelek, telefonske številke in lokacija. Poleg osnovnih podatkov so dostopni tudi organizacijski odnosi, kot sta nadrejeni uporabnik (\texttt{manager}) in seznam podrejenih zaposlenih (\texttt{directReports}), kar omogoča gradnjo organizacijskih diagramov in sistemov za upravljanje kadrovskih procesov.
 
-Pomembna funkcionalnost je dostop do uporabniških virov preko relacijskih povezav. Iz uporabniškega objekta je mogoče neposredno dostopati do poštnega predala, koledarjev, datotek v OneDrive, članstev v skupinah, ekip Teams in drugih povezanih storitev. Primer takšne povezave je končna točka:
-
-\begin{verbatim}
-/users/{id}/drive
-\end{verbatim}
-
-ki omogoča dostop do uporabnikovega prostora OneDrive.
+Pomembna funkcionalnost je dostop do uporabniških virov preko relacijskih povezav. Iz uporabniškega objekta je mogoče neposredno dostopati do poštnega predala, koledarjev, datotek v OneDrive, članstev v skupinah, ekip Teams in drugih povezanih storitev. Primer takšne povezave je končna točka: \texttt{/users/{id}/drive}, ki omogoča dostop do uporabnikovega prostora OneDrive.
 
 Microsoft Graph podpira tudi upravljanje življenjskega cikla uporabnikov. Administratorji lahko ustvarjajo nove račune, spreminjajo njihove lastnosti, dodeljujejo licence, upravljajo članstva v skupinah ter izvajajo postopke obnovitve ali trajnega brisanja računov. Za večje organizacije je pomembna tudi podpora za množične operacije in sinhronizacijo identitet z lokalnimi imeniki.
 
 \subsection{Skupine}
 
-Vir \texttt{Group} predstavlja logično združevanje uporabnikov in naprav ter je eden najpomembnejših mehanizmov za upravljanje dostopa v okolju Microsoft 365. Microsoft Graph podpira več vrst skupin, med katerimi sta najpogosteje uporabljeni Microsoft 365 skupina in varnostna skupina (*Security Group*).
+Vir \texttt{Group} predstavlja logično združevanje uporabnikov in naprav ter je eden najpomembnejših mehanizmov za upravljanje dostopa v okolju Microsoft 365. Microsoft Graph podpira več vrst skupin, med katerimi sta najpogosteje uporabljeni Microsoft 365 skupina in varnostna skupina (angl. Security Group).
 
 Microsoft 365 skupina poleg članstva samodejno zagotavlja tudi skupni poštni predal, SharePoint mesto, koledar, OneNote beležnico in druge povezane vire. Zaradi tega predstavlja temelj sodelovalnih okolij v storitvah Teams, Planner in Outlook.
 
@@ -750,6 +742,633 @@ Microsoft Graph omogoča upravljanje članov skupin preko relacijskih virov:
 Podprto je dodajanje in odstranjevanje članov, pridobivanje informacij o lastnikih skupine ter upravljanje dinamičnega članstva. Dinamične skupine uporabljajo pravila na osnovi atributov uporabnikov, kar omogoča avtomatsko vključevanje ali izključevanje članov brez ročnega posredovanja administratorjev.
 
 Pri večjih sistemih je pomembna tudi možnost pridobivanja transitivega članstva, kjer Microsoft Graph vrne vse skupine, v katere je uporabnik vključen neposredno ali posredno preko ugnezdenih skupin.
+
+\begin{longtable}{|p{7cm}|p{7.5cm}|}
+\caption{Microsoft Graph API endpointi za delo s skupinami}
+\label{tab:group-endpoints} \\
+\hline
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endfirsthead
+
+\multicolumn{2}{c}%
+{{\tablename\ \thetable{} -- nadaljevanje}} \\
+\hline
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endhead
+
+\hline
+\multicolumn{2}{r}{{Nadaljevanje na naslednji strani}} \\
+\endfoot
+
+\hline
+\endlastfoot
+
+\multicolumn{2}{|l|}{\textbf{Skupine}} \\
+\hline
+
+\texttt{GET /groups} &
+Pridobi seznam skupin v organizaciji. \\
+\hline
+
+\texttt{POST /groups} &
+Ustvari novo skupino. \\
+\hline
+
+\texttt{GET /groups/\{group-id\}} &
+Pridobi podatke o določeni skupini. \\
+\hline
+
+\texttt{PATCH /groups/\{group-id\}} &
+Posodobi lastnosti skupine. \\
+\hline
+
+\texttt{DELETE /groups/\{group-id\}} &
+Izbriše skupino. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Člani skupine}} \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/members} &
+Pridobi člane skupine. \\
+\hline
+
+\texttt{POST /groups/\{group-id\}/members
+/\$ref} &
+Doda člana v skupino. \\
+\hline
+
+\texttt{DELETE /groups/\{group-id\}/members
+/\{directory-object-id\}/\$ref} &
+Odstrani člana iz skupine. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Lastniki skupine}} \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/owners} &
+Pridobi lastnike skupine. \\
+\hline
+
+\texttt{POST /groups/\{group-id\}/owners
+/\$ref} &
+Doda lastnika skupini. \\
+\hline
+
+\texttt{DELETE /groups/\{group-id\}/owners
+/\{directory-object-id\}/\$ref} &
+Odstrani lastnika skupine. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Pogovori}} \\
+\hline
+
+\texttt{GET /groups/\{group-id\}
+/conversations} &
+Pridobi pogovore skupine. \\
+\hline
+
+\texttt{POST /groups/\{group-id\}
+/conversations} &
+Ustvari nov pogovor. \\
+\hline
+
+\texttt{GET /groups/\{group-id\}
+/conversations/\{conversation-id\}} &
+Pridobi določen pogovor. \\
+\hline
+
+\texttt{DELETE /groups/\{group-id\}
+/conversations/\{conversation-id\}} &
+Izbriše pogovor. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Niti pogovorov}} \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/threads} &
+Pridobi niti pogovorov skupine. \\
+\hline
+
+\texttt{GET ../threads/\{thread-id\}} &
+Pridobi določeno nit. \\
+\hline
+
+\texttt{POST ../threads/\{thread-id\}/reply} &
+Doda odgovor v nit pogovora. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Objave}} \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/threads
+/\{thread-id\}/posts} &
+Pridobi objave v niti. \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/threads
+/\{thread-id\}/posts/\{post-id\}} &
+Pridobi določeno objavo. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Datoteke}} \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/drive} &
+Pridobi dokumentno knjižnico skupine. \\
+\hline
+
+\texttt{GET ../drive/root} &
+Pridobi korensko mapo dokumentov skupine. \\
+\hline
+
+\texttt{GET ../drive/items/\{item-id\}} &
+Pridobi datoteko ali mapo skupine. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Koledarji}} \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/calendar} &
+Pridobi privzeti koledar skupine. \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/events} &
+Pridobi dogodke skupine. \\
+\hline
+
+\texttt{POST /groups/\{group-id\}/events} &
+Ustvari nov dogodek skupine. \\
+\hline
+
+\texttt{GET ../events/\{event-id\}} &
+Pridobi določen dogodek. \\
+\hline
+
+\texttt{PATCH ../events/\{event-id\}} &
+Posodobi dogodek. \\
+\hline
+
+\texttt{DELETE ../events/\{event-id\}} &
+Izbriše dogodek. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Zvezki OneNote}} \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/onenote
+/notebooks} &
+Pridobi zvezke OneNote skupine. \\
+\hline
+
+\texttt{POST /groups/\{group-id\}/onenote
+/notebooks} &
+Ustvari nov zvezek OneNote. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Spletna mesta SharePoint}} \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/sites/root} &
+Pridobi povezano SharePoint spletno mesto. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Ekipa Teams}} \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/team} &
+Pridobi ekipo Teams, povezano s skupino. \\
+\hline
+
+\texttt{PUT /groups/\{group-id\}/team} &
+Ustvari ekipo Teams iz skupine. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Nastavitve in življenjski cikel}} \\
+\hline
+
+\texttt{POST /groups/\{group-id\}/renew} &
+Podaljša življenjsko dobo skupine. \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/settings} &
+Pridobi nastavitve skupine. \\
+\hline
+
+\texttt{GET /groups/\{group-id\}
+/transitiveMembers} &
+Pridobi vse neposredne in posredne člane skupine. \\
+\hline
+
+\texttt{GET /groups/\{group-id\}
+/transitiveMemberOf} &
+Pridobi vse skupine, katerih član je skupina. \\
+\hline
+
+\end{longtable}
+
+\subsection{Elektronska pošta}
+
+\begin{longtable}{|p{7cm}|p{7.5cm}|}
+\caption{Microsoft Graph API endpointi za delo z elektronsko pošto}
+\label{tab:mail-endpoints}\\
+\hline
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\endlastfoot
+
+\multicolumn{2}{|l|}{\textbf{Sporočila}} \\
+\hline
+
+\texttt{GET /me/messages} &
+Pridobi seznam sporočil prijavljenega uporabnika. \\
+\hline
+
+\texttt{POST /me/messages} &
+Ustvari novo sporočilo v obliki osnutka. \\
+\hline
+
+\texttt{GET /me/messages/\{message-id\}} &
+Pridobi podrobnosti določenega sporočila. \\
+\hline
+
+\texttt{PATCH /me/messages/\{message-id\}} &
+Posodobi lastnosti sporočila. \\
+\hline
+
+\texttt{DELETE /me/messages/\{message-id\}} &
+Izbriše sporočilo. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Pošiljanje sporočil}} \\
+\hline
+
+\texttt{POST /me/sendMail} &
+Pošlje novo elektronsko sporočilo. \\
+\hline
+
+\texttt{POST /me/messages/\{message-id\}
+/send} &
+Pošlje predhodno ustvarjen osnutek sporočila. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Mape poštnega predala}} \\
+\hline
+
+\texttt{GET /me/mailFolders} &
+Pridobi seznam map poštnega predala. \\
+\hline
+
+\texttt{POST /me/mailFolders} &
+Ustvari novo mapo poštnega predala. \\
+\hline
+
+\texttt{GET ../\{mailFolder-id\}} &
+Pridobi podatke o določeni mapi. \\
+\hline
+
+\texttt{PATCH ../\{mailFolder-id\}} &
+Posodobi lastnosti mape. \\
+\hline
+
+\texttt{DELETE ../\{mailFolder-id\}} &
+Izbriše mapo poštnega predala. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Sporočila v mapi}} \\
+\hline
+
+\texttt{GET ../\{mailFolder-id\}/messages} &
+Pridobi sporočila iz izbrane mape. \\
+\hline
+
+\texttt{POST ../\{mailFolder-id\}/messages} &
+Ustvari sporočilo v izbrani mapi. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Premikanje in kopiranje}} \\
+\hline
+
+\texttt{POST /me/messages/\{message-id\}
+/move} &
+Premakne sporočilo v drugo mapo. \\
+\hline
+
+\texttt{POST /me/messages/\{message-id\}
+/copy} &
+Kopira sporočilo v drugo mapo. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Priponke}} \\
+\hline
+
+\texttt{GET ../attachments} &
+Pridobi priponke sporočila. \\
+\hline
+
+\texttt{POST ../attachments} &
+Doda priponko sporočilu. \\
+\hline
+
+\texttt{GET ../attachments/\{attachment-id\}} &
+Pridobi določeno priponko. \\
+\hline
+
+\texttt{DELETE ../attachments/\{attachment-id\}} &
+Izbriše priponko. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Osnutki}} \\
+\hline
+
+\texttt{POST ../createReply} &
+Ustvari osnutek odgovora na sporočilo. \\
+\hline
+
+\texttt{POST ../createReplyAll} &
+Ustvari osnutek odgovora vsem prejemnikom. \\
+\hline
+
+\texttt{POST ../createForward} &
+Ustvari osnutek za posredovanje sporočila. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Odgovarjanje in posredovanje}} \\
+\hline
+
+\texttt{POST ../reply} &
+Odgovori pošiljatelju sporočila. \\
+\hline
+
+\texttt{POST ../replyAll} &
+Odgovori vsem prejemnikom sporočila. \\
+\hline
+
+\texttt{POST ../forward} &
+Posreduje sporočilo drugim prejemnikom. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Posebne operacije}} \\
+\hline
+
+\texttt{POST ../markAsJunk} &
+Označi sporočilo kot nezaželeno pošto. \\
+\hline
+
+\texttt{POST ../unmarkAsJunk} &
+Odstrani oznako nezaželene pošte. \\
+\hline
+
+\end{longtable}
+
+
+\subsection{Koledarji in dogodki}
+
+Koledarski del Microsoft Graph temelji na virih \texttt{Calendar}, \texttt{Event} in \texttt{CalendarView}. API omogoča popoln dostop do Outlook koledarjev ter upravljanje dogodkov, sestankov in rezervacij virov.
+
+Dogodki vsebujejo številne atribute, med katerimi so čas začetka in konca, seznam udeležencev, lokacija, opis, ponavljajoči se vzorci ter informacije o spletnih srečanjih. Microsoft Graph podpira ustvarjanje dogodkov z integracijo Microsoft Teams, pri čemer se samodejno ustvari povezava za videokonferenčni sestanek.
+
+Posebej uporabna funkcionalnost je metoda \texttt{findMeetingTimes}, ki analizira razpoložljivost vseh udeležencev in predlaga optimalne termine za sestanek. Pri tem sistem upošteva delovni čas uporabnikov, časovne pasove, obstoječe rezervacije in druge omejitve.
+
+Za spremljanje sprememb koledarjev je mogoče uporabiti naročnine (angl. Subscriptions) in spletne kljuke (angl. Webhooks), ki aplikacijo obvestijo ob ustvarjanju, spremembi ali brisanju dogodkov.
+
+\begin{longtable}{|p{7cm}|p{7.5cm}|}
+\caption{Microsoft Graph API endpointi za delo s koledarji}
+\label{tab:calendar-endpoints} \\
+\hline
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endfirsthead
+
+\multicolumn{2}{c}%
+{{\tablename\ \thetable{} -- nadaljevanje}} \\
+\hline
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endhead
+
+\hline
+\endlastfoot
+
+\multicolumn{2}{|l|}{\textbf{Koledarji}} \\
+\hline
+
+\texttt{GET /me/calendar} &
+Pridobi privzeti koledar prijavljenega uporabnika. \\
+\hline
+
+\texttt{GET /users/\{user-id\}/calendar} &
+Pridobi privzeti koledar uporabnika. \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/calendar} &
+Pridobi privzeti koledar skupine Microsoft 365. \\
+\hline
+
+\texttt{GET /me/calendars} &
+Pridobi seznam uporabnikovih koledarjev. \\
+\hline
+
+\texttt{POST /me/calendars} &
+Ustvari nov koledar. \\
+\hline
+
+\texttt{GET /me/calendars/\{calendar-id\}} &
+Pridobi določen koledar. \\
+\hline
+
+\texttt{PATCH /me/calendars/\{calendar-id\}} &
+Posodobi lastnosti koledarja. \\
+\hline
+
+\texttt{DELETE /me/calendars/\{calendar-id\}} &
+Izbriše koledar. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Skupine koledarjev}} \\
+\hline
+
+\texttt{GET /me/calendarGroups} &
+Pridobi skupine koledarjev uporabnika. \\
+\hline
+
+\texttt{POST /me/calendarGroups} &
+Ustvari novo skupino koledarjev. \\
+\hline
+
+\texttt{GET /me/calendarGroups/\{group-id\}} &
+Pridobi določeno skupino koledarjev. \\
+\hline
+
+\texttt{PATCH ../\{group-id\}} &
+Posodobi skupino koledarjev. \\
+\hline
+
+\texttt{DELETE ../\{group-id\}} &
+Izbriše skupino koledarjev. \\
+\hline
+
+\texttt{GET ../\{group-id\}/calendars} &
+Pridobi koledarje v skupini. \\
+\hline
+
+\texttt{POST ../\{group-id\}/calendars} &
+Ustvari koledar v skupini. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Dogodki}} \\
+\hline
+
+\texttt{GET /me/events} &
+Pridobi vse dogodke uporabnika. \\
+\hline
+
+\texttt{POST /me/events} &
+Ustvari nov dogodek. \\
+\hline
+
+\texttt{GET /me/events/\{event-id\}} &
+Pridobi določen dogodek. \\
+\hline
+
+\texttt{PATCH /me/events/\{event-id\}} &
+Posodobi dogodek. \\
+\hline
+
+\texttt{DELETE /me/events/\{event-id\}} &
+Izbriše dogodek. \\
+\hline
+
+\texttt{GET /me/calendar/events} &
+Pridobi dogodke privzetega koledarja. \\
+\hline
+
+\texttt{POST /me/calendar/events} &
+Ustvari dogodek v privzetem koledarju. \\
+\hline
+
+\texttt{GET /me/calendars/\{calendar-id\}
+/events} &
+Pridobi dogodke določenega koledarja. \\
+\hline
+
+\texttt{POST /me/calendars/\{calendar-id\}
+/events} &
+Ustvari dogodek v določenem koledarju. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Pogled koledarja}} \\
+\hline
+
+\texttt{GET /me/calendarView
+?startDateTime=\{start\}\&endDateTime=\{end\}} &
+Pridobi dogodke v podanem časovnem obdobju. \\
+\hline
+
+\texttt{GET /me/calendars
+/\{calendar-id\}/calendarView
+?startDateTime=\{start\}\&endDateTime=\{end\}} &
+Pridobi pogled določenega koledarja za izbrano obdobje. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Ponavljajoči dogodki}} \\
+\hline
+
+\texttt{GET /me/events/\{event-id\}
+/instances
+?startDateTime=\{start\}\&endDateTime=\{end\}} &
+Pridobi posamezne pojavitve ponavljajočega dogodka. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Odgovori na povabila}} \\
+\hline
+
+\texttt{POST /me/events/\{event-id\}/accept} &
+Sprejme povabilo na dogodek. \\
+\hline
+
+\texttt{POST /me/events/\{event-id\}
+/tentativelyAccept} &
+Dogodek sprejme pogojno. \\
+\hline
+
+\texttt{POST /me/events/\{event-id\}/decline} &
+Zavrne povabilo na dogodek. \\
+\hline
+
+\texttt{POST /me/events/\{event-id\}/cancel} &
+Prekliče organiziran dogodek. \\
+\hline
+
+\texttt{POST /me/events/\{event-id\}/forward} &
+Posreduje povabilo drugim uporabnikom. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Priponke dogodkov}} \\
+\hline
+
+\texttt{GET /me/events/\{event-id\}
+/attachments} &
+Pridobi priponke dogodka. \\
+\hline
+
+\texttt{POST /me/events/\{event-id\}
+/attachments} &
+Doda priponko dogodku. \\
+\hline
+
+\texttt{GET /me/events/\{event-id\}
+/attachments/\{attachment-id\}} &
+Pridobi določeno priponko. \\
+\hline
+
+\texttt{DELETE /me/events/\{event-id\}
+/attachments/\{attachment-id\}} &
+Izbriše priponko. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Dovoljenja koledarja}} \\
+\hline
+
+\texttt{GET /me/calendar
+/calendarPermissions} &
+Pridobi dovoljenja privzetega koledarja. \\
+\hline
+
+\texttt{GET /me/calendars/\{calendar-id\}
+/calendarPermissions} &
+Pridobi dovoljenja izbranega koledarja. \\
+\hline
+
+\texttt{POST /me/calendars/\{calendar-id\}
+/calendarPermissions} &
+Doda novo dovoljenje za koledar. \\
+\hline
+
+\texttt{PATCH /me/calendars/\{calendar-id\}
+/calendarPermissions/\{permission-id\}} &
+Posodobi dovoljenje. \\
+\hline
+
+\texttt{DELETE /me/calendars/\{calendar-id\}
+/calendarPermissions/\{permission-id\}} &
+Odstrani dovoljenje. \\
+\hline
+
+\end{longtable}
 
 \subsection{Datoteke in dokumenti}
 
@@ -765,15 +1384,124 @@ Microsoft Graph podpira nalaganje datotek različnih velikosti. Pri manjših dat
 
 Pomembna funkcionalnost je upravljanje dovoljenj in povezav za skupno rabo. Aplikacije lahko ustvarjajo časovno omejene povezave, določajo pravice za ogled ali urejanje dokumentov ter spremljajo dostop do datotek. Poleg tega Microsoft Graph omogoča spremljanje sprememb preko mehanizma delta poizvedb (angl. Delta Query), kar je posebej uporabno pri sinhronizaciji dokumentov med sistemi.
 
-\subsection{Koledarji in dogodki}
+\begin{longtable}{|p{5.5cm}|p{8.5cm}|}
+\caption{Ključni Microsoft Graph API endpointi za delo z dokumenti in datotekami}
+\label{tab:file-document-endpoints} \\
+\hline
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endfirsthead
 
-Koledarski del Microsoft Graph temelji na virih \texttt{Calendar}, \texttt{Event} in \texttt{CalendarView}. API omogoča popoln dostop do Outlook koledarjev ter upravljanje dogodkov, sestankov in rezervacij virov.
+\multicolumn{2}{c}%
+{{\tablename\ \thetable{} -- nadaljevanje}} \\
+\hline
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endhead
 
-Dogodki vsebujejo številne atribute, med katerimi so čas začetka in konca, seznam udeležencev, lokacija, opis, ponavljajoči se vzorci ter informacije o spletnih srečanjih. Microsoft Graph podpira ustvarjanje dogodkov z integracijo Microsoft Teams, pri čemer se samodejno ustvari povezava za videokonferenčni sestanek.
+\hline
+\endlastfoot
 
-Posebej uporabna funkcionalnost je metoda \texttt{findMeetingTimes}, ki analizira razpoložljivost vseh udeležencev in predlaga optimalne termine za sestanek. Pri tem sistem upošteva delovni čas uporabnikov, časovne pasove, obstoječe rezervacije in druge omejitve.
+\texttt{GET /me/drive} &
+Pridobi OneDrive trenutnega uporabnika. \\
+\hline
 
-Za spremljanje sprememb koledarjev je mogoče uporabiti naročnine (angl. Subscriptions) in spletne kljuke (angl. Webhooks), ki aplikacijo obvestijo ob ustvarjanju, spremembi ali brisanju dogodkov.
+\texttt{GET /drives} &
+Pridobi seznam pogonov, do katerih ima uporabnik dostop. \\
+\hline
+
+\texttt{GET /drives/\{drive-id\}} &
+Pridobi informacije o določenem pogonu. \\
+\hline
+
+\texttt{GET /me/drive/root} &
+Pridobi korensko mapo uporabnikovega OneDrive-a. \\
+\hline
+
+\texttt{GET /me/drive/root/children} &
+Pridobi seznam datotek in map v korenski mapi. \\
+\hline
+
+\texttt{GET /drives/\{drive-id\}/items/
+\{item-id\}} &
+Pridobi informacije o določeni datoteki ali mapi. \\
+\hline
+
+\texttt{GET /drives/\{drive-id\}/items/
+\{item-id\}/children} &
+Pridobi vsebino določene mape. \\
+\hline
+
+\texttt{PUT /drives/\{drive-id\}/items/
+\{parent-id\}:/\{filename\}:/content} &
+Naloži novo datoteko v izbrano mapo ali zamenja obstoječo datoteko. \\
+\hline
+
+\texttt{GET ../\{item-id\}/content} &
+Prenese vsebino datoteke. \\
+\hline
+
+\texttt{PATCH ..\{item-id\}} &
+Posodobi lastnosti datoteke ali mape (npr. ime). \\
+\hline
+
+\texttt{DELETE ../\{item-id\}} &
+Izbriše datoteko ali mapo. \\
+\hline
+
+\texttt{POST ../\{item-id\}/copy} &
+Ustvari kopijo datoteke ali mape. \\
+\hline
+
+\texttt{POST ../\{item-id\}/move} &
+Premakne datoteko ali mapo na drugo mesto znotraj pogona. \\
+\hline
+
+\texttt{POST ../\{item-id\}/createLink} &
+Ustvari povezavo za skupno rabo datoteke ali mape. \\
+\hline
+
+\texttt{POST ../\{item-id\}/invite} &
+Podeli dostop do datoteke ali mape drugim uporabnikom. \\
+\hline
+
+\texttt{GET /shares/\{share-id\}
+/driveItem} &
+Pridobi datoteko ali mapo prek povezave za skupno rabo. \\
+\hline
+
+\texttt{GET /sites/\{site-id\}/drive} &
+Pridobi dokumentno knjižnico SharePoint mesta. \\
+\hline
+
+\texttt{GET /sites/\{site-id\}/drive
+/root/children} &
+Pridobi dokumente in mape v korenski mapi SharePoint knjižnice. \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/drive} &
+Pridobi dokumentno knjižnico skupine Microsoft 365. \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/drive
+/root/children} &
+Pridobi datoteke in mape v dokumentni knjižnici skupine. \\
+\hline
+
+\texttt{GET /drives/\{drive-id\}/items
+/\{item-id\}/permissions} &
+Pridobi dovoljenja za datoteko ali mapo. \\
+\hline
+
+\texttt{POST ../permissions} &
+Ustvari novo dovoljenje za dostop do datoteke ali mape. \\
+\hline
+
+\texttt{DELETE ../permissions/\{perm-id\}} &
+Odstrani določeno dovoljenje za datoteko ali mapo. \\
+\hline
+
+\end{longtable}
 
 \subsection{Excel in poslovni podatki}
 
@@ -794,6 +1522,202 @@ Za zagotavljanje konsistentnosti podatkov Microsoft Graph podpira koncept sej (a
 
 Excel API je posebej uporaben pri avtomatizaciji poročanja, pripravi finančnih analiz, integraciji poslovnih podatkov in gradnji analitičnih rešitev, kjer Excel predstavlja podatkovni vir ali uporabniški vmesnik za poslovne uporabnike.
 
+\begin{longtable}{|p{7cm}|p{7.5cm}|}
+\caption{Ključni Microsoft Graph API endpointi za delo z Excelovimi dokumenti}
+\label{tab:excel-endpoints} \\
+\hline
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endfirsthead
+
+\multicolumn{2}{c}%
+{{\tablename\ \thetable{} -- nadaljevanje}} \\
+\hline
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endhead
+
+\hline
+\endlastfoot
+
+\multicolumn{2}{|l|}{\textbf{Delovni zvezek}} \\
+\hline
+
+\texttt{GET /me/drive/items/\{item-id\}
+/workbook} &
+Pridobi Excelov delovni zvezek uporabnika. \\
+\hline
+
+\texttt{GET /drives/\{drive-id\}/items
+/\{item-id\}/workbook} &
+Pridobi Excelov delovni zvezek iz določenega pogona. \\
+\hline
+
+\texttt{POST ../workbook/createSession} &
+Ustvari sejo za delo z Excelovim dokumentom. \\
+\hline
+
+\texttt{POST ../workbook/closeSession} &
+Zapre aktivno Excelovo sejo. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Delovni listi}} \\
+\hline
+
+\texttt{GET .drives/\{drive-id\}/items
+/\{item-id\}/workbook/worksheets} &
+Pridobi seznam delovnih listov v dokumentu. \\
+\hline
+
+\texttt{GET ../\{worksheet-id\}} &
+Pridobi podatke o določenem delovnem listu. \\
+\hline
+
+\texttt{POST ../worksheets/add} &
+Ustvari nov delovni list. \\
+\hline
+
+\texttt{PATCH ../worksheets/\{worksheet-id\}} &
+Posodobi lastnosti delovnega lista. \\
+\hline
+
+\texttt{DELETE ../worksheets/\{worksheet-id\}} &
+Izbriše delovni list. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Območja celic}} \\
+\hline
+
+\texttt{GET ../range(address='A1:C10')} &
+Prebere vrednosti, formule in oblikovanje območja celic. \\
+\hline
+
+\texttt{PATCH ../range(address='A1:C10')} &
+Posodobi vrednosti ali formule v območju celic. \\
+\hline
+
+\texttt{POST ../range(address='A1:C10')
+/clear} &
+Počisti vsebino ali oblikovanje izbranega območja. \\
+\hline
+
+\texttt{POST ../range(address='A1:C10')
+/insert} &
+Vstavi nove celice v območje. \\
+\hline
+
+\texttt{POST ../range(address='A1:C10')
+/delete} &
+Odstrani celice iz območja. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Tabele}} \\
+\hline
+
+\texttt{GET ../workbook/tables} &
+Pridobi seznam tabel v delovnem zvezku. \\
+\hline
+
+\texttt{POST ../tables/add} &
+Ustvari novo tabelo iz območja celic. \\
+\hline
+
+\texttt{GET ../tables/\{table-id\}} &
+Pridobi podatke o določeni tabeli. \\
+\hline
+
+\texttt{PATCH ../tables/\{table-id\}} &
+Posodobi lastnosti tabele. \\
+\hline
+
+\texttt{DELETE ../tables/\{table-id\}} &
+Izbriše tabelo. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Stolpci in vrstice tabel}} \\
+\hline
+
+\texttt{GET ../tables/\{table-id\}/columns} &
+Pridobi stolpce izbrane tabele. \\
+\hline
+
+\texttt{POST ../\{table-id\}/columns/add} &
+Doda nov stolpec v tabelo. \\
+\hline
+
+\texttt{GET ../\{table-id\}/rows} &
+Pridobi vrstice Excelove tabele. \\
+\hline
+
+\texttt{POST ../\{table-id\}/rows/add} &
+Doda novo vrstico v tabelo. \\
+\hline
+
+\texttt{DELETE ../\{table-id\}/rows/\{index\}} &
+Izbriše določeno vrstico tabele. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Imenovani obsegi}} \\
+\hline
+
+\texttt{GET ../workbook/names} &
+Pridobi imenovane obsege v dokumentu. \\
+\hline
+
+\texttt{POST ../workbook/names/add} &
+Ustvari nov imenovan obseg. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Grafi}} \\
+\hline
+
+\texttt{GET ../workbook/charts} &
+Pridobi seznam grafov. \\
+\hline
+
+\texttt{POST ../workbook/worksheets
+/\{worksheet-id\}/charts/add} &
+Ustvari nov graf. \\
+\hline
+
+\texttt{GET ../charts/\{chart-id\}} &
+Pridobi podatke o določenem grafu. \\
+\hline
+
+\texttt{PATCH ../charts/\{chart-id\}} &
+Posodobi lastnosti grafa. \\
+\hline
+
+\texttt{DELETE ../charts/\{chart-id\}} &
+Izbriše graf. \\
+\hline
+
+\texttt{GET ../range(address='A1:C10')
+/format} &
+Pridobi oblikovanje območja celic. \\
+\hline
+
+\texttt{PATCH ../range(address='A1:C10')
+/format} &
+Posodobi oblikovanje območja celic. \\
+\hline
+
+\texttt{POST ../range(address='A1:C10')
+/sort} &
+Razvrsti podatke v izbranem območju. \\
+\hline
+
+\texttt{POST ../range(address='A1:C10')
+/filter} &
+Uporabi filter nad podatki. \\
+\hline
+
+\texttt{POST ../functions/\{function-name\}} &
+Izvede vgrajeno Excelovo funkcijo. \\
+\hline
+
+\end{longtable}
+
 \subsection{OneNote}
 
 OneNote API omogoča dostop do beležnic, odsekov in posameznih strani znotraj storitve Microsoft OneNote. Podatkovni model temelji na hierarhiji objektov \texttt{Notebook}, \texttt{Section} in \texttt{Page}, kar omogoča strukturirano organizacijo vsebin.
@@ -801,6 +1725,181 @@ OneNote API omogoča dostop do beležnic, odsekov in posameznih strani znotraj s
 Posebnost OneNote API-ja je uporaba HTML vsebine za predstavitev strani. Pri ustvarjanju ali posodabljanju zapiskov aplikacija pošilja HTML dokumente, ki lahko vsebujejo oblikovano besedilo, slike, povezave, sezname in druge elemente. Takšen pristop omogoča bogato predstavitev vsebine brez potrebe po uporabi lastnega formata dokumentov.
 
 Microsoft Graph omogoča tudi iskanje po vsebini beležnic, pridobivanje metapodatkov ter upravljanje prilog. Zaradi teh lastnosti je OneNote primeren za implementacijo sistemov za upravljanje znanja, projektne dokumentacije in zapisnikov sestankov.
+
+\begin{longtable}{|p{6cm}|p{8cm}|}
+\caption{Ključni Microsoft Graph API endpointi za delo z OneNote dokumenti}
+\label{tab:onenote-endpoints} \\
+\hline
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endfirsthead
+
+\multicolumn{2}{c}%
+{{\tablename\ \thetable{} -- nadaljevanje}} \\
+\hline
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endhead
+
+\hline
+\endlastfoot
+
+\multicolumn{2}{|l|}{\textbf{Upravljanje zvezkov}} \\
+\hline
+
+\texttt{GET /me/onenote/notebooks} &
+Pridobi seznam zvezkov OneNote trenutnega uporabnika. \\
+\hline
+
+\texttt{POST /me/onenote/notebooks} &
+Ustvari nov OneNote zvezek. \\
+\hline
+
+\texttt{GET ../\{notebook-id\}} &
+Pridobi podatke o določenem OneNote zvezku. \\
+\hline
+
+\texttt{PATCH ../\{notebook-id\}} &
+Posodobi lastnosti OneNote zvezka. \\
+\hline
+
+\texttt{DELETE ../\{notebook-id\}} &
+Izbriše OneNote zvezek. \\
+\hline
+
+\texttt{GET ../\{notebook-id\}/sections} &
+Pridobi razdelke izbranega zvezka. \\
+\hline
+
+\texttt{POST ../\{notebook-id\}/sections} &
+Ustvari nov razdelek v zvezku. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Organizacija vsebine}} \\
+\hline
+
+\texttt{GET /me/onenote/sections} &
+Pridobi vse razdelke OneNote uporabnika. \\
+\hline
+
+\texttt{GET ../\{section-id\}} &
+Pridobi podatke o določenem razdelku. \\
+\hline
+
+\texttt{PATCH ../\{section-id\}} &
+Posodobi lastnosti razdelka. \\
+\hline
+
+\texttt{DELETE ../\{section-id\}} &
+Izbriše razdelek. \\
+\hline
+
+\texttt{GET ../\{section-id\}/pages} &
+Pridobi strani v izbranem razdelku. \\
+\hline
+
+\texttt{POST ../\{section-id\}/pages} &
+Ustvari novo stran v razdelku. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Branje in zapisovanje zapiskov}} \\
+\hline
+
+\texttt{GET /me/onenote/pages} &
+Pridobi vse OneNote strani uporabnika. \\
+\hline
+
+\texttt{GET ../\{page-id\}} &
+Pridobi podatke o določeni strani. \\
+\hline
+
+\texttt{PATCH ../\{page-id\}} &
+Posodobi lastnosti strani. \\
+\hline
+
+\texttt{DELETE ../\{page-id\}} &
+Izbriše stran. \\
+\hline
+
+\texttt{GET ../\{page-id\}/content} &
+Pridobi HTML vsebino strani OneNote. \\
+\hline
+
+\texttt{PATCH ../\{page-id\}/content} &
+Posodobi vsebino strani z uporabo ukazov HTML. \\
+\hline
+
+\texttt{GET ../\{page-id\}/preview} &
+Pridobi predogled strani. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Slike in priponke}} \\
+\hline
+
+\texttt{GET /me/onenote/resources} &
+Pridobi vire, povezane z OneNote stranmi (slike, datoteke in drugi objekti). \\
+\hline
+
+\texttt{GET ../\{resource-id\}} &
+Pridobi določen vir strani. \\
+\hline
+
+\texttt{GET ../\{resource-id\}/\$value} &
+Prenese binarno vsebino vira (npr. sliko ali datoteko). \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Skupine razdelkov}} \\
+\hline
+
+\texttt{GET /me/onenote/notebooks
+/\{notebook-id\}/sectionGroups} &
+Pridobi skupine razdelkov v zvezku. \\
+\hline
+
+\texttt{POST /me/onenote/notebooks
+/\{notebook-id\}/sectionGroups} &
+Ustvari novo skupino razdelkov. \\
+\hline
+
+\texttt{GET /me/onenote/sectionGroups
+/\{sectionGroup-id\}} &
+Pridobi podatke o skupini razdelkov. \\
+\hline
+
+\texttt{PATCH /me/onenote/sectionGroups
+/\{sectionGroup-id\}} &
+Posodobi skupino razdelkov. \\
+\hline
+
+\texttt{DELETE /me/onenote/sectionGroups
+/\{sectionGroup-id\}} &
+Izbriše skupino razdelkov. \\
+\hline
+
+\texttt{GET /me/onenote/sectionGroups
+/\{sectionGroup-id\}/sections} &
+Pridobi razdelke znotraj skupine razdelkov. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Dostop do zvezkov}} \\
+\hline
+
+\texttt{GET /users/\{user-id\}
+/onenote/notebooks} &
+Pridobi OneNote zvezke določenega uporabnika. \\
+\hline
+
+\texttt{GET /groups/\{group-id\}
+/onenote/notebooks} &
+Pridobi OneNote zvezke skupine Microsoft 365. \\
+\hline
+
+\texttt{GET /sites/\{site-id\}
+/onenote/notebooks} &
+Pridobi OneNote zvezke, povezane s SharePoint mestom. \\
+\hline
+
+\end{longtable}
 
 \subsection{Microsoft Teams}
 
@@ -814,7 +1913,255 @@ Pri spletnih sestankih API omogoča ustvarjanje, načrtovanje in spremljanje sre
 
 Zaradi tesne povezanosti s SharePointom, Outlookom, OneDriveom in Microsoft Entra ID predstavlja Teams pomembno integracijsko točko za razvoj poslovnih aplikacij, ki združujejo komunikacijo, dokumente in poslovne procese v enotnem uporabniškem okolju.
 
+\begin{longtable}{|p{6cm}|p{8cm}|}
+\caption{Ključni Microsoft Graph API endpointi za delo z Microsoft Teams}
+\label{tab:teams-endpoints} \\
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endfirsthead
 
+\multicolumn{2}{c}%
+{{\tablename\ \thetable{} -- nadaljevanje}} \\
+\hline
+\textbf{Endpoint} & \textbf{Opis} \\
+\hline
+\endhead
+
+\multicolumn{2}{|l|}{\textbf{Ustvarjanje in upravljanje ekip}} \\
+\hline
+
+\texttt{GET /teams} &
+Pridobi seznam ekip Microsoft Teams, do katerih ima uporabnik dostop. \\
+\hline
+
+\texttt{GET /teams/\{team-id\}} &
+Pridobi podatke o določeni ekipi. \\
+\hline
+
+\texttt{POST /teams} &
+Ustvari novo ekipo Microsoft Teams. \\
+\hline
+
+\texttt{PATCH /teams/\{team-id\}} &
+Posodobi lastnosti ekipe. \\
+\hline
+
+\texttt{DELETE /teams/\{team-id\}} &
+Izbriše ekipo. \\
+\hline
+
+\texttt{GET /groups/\{group-id\}/team} &
+Pridobi ekipo, povezano z Microsoft 365 skupino. \\
+\hline
+
+\texttt{PUT /groups/\{group-id\}/team} &
+Ustvari ekipo iz obstoječe Microsoft 365 skupine. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Kanali in zasebni kanali}} \\
+\hline
+
+\texttt{GET /teams/\{team-id\}/channels} &
+Pridobi seznam kanalov v ekipi. \\
+\hline
+
+\texttt{POST /teams/\{team-id\}/channels} &
+Ustvari nov kanal v ekipi. \\
+\hline
+
+\texttt{GET ../\{channel-id\}} &
+Pridobi podatke o določenem kanalu. \\
+\hline
+
+\texttt{PATCH ../\{channel-id\}} &
+Posodobi podatke kanala. \\
+\hline
+
+\texttt{DELETE ../\{channel-id\}} &
+Izbriše kanal. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Člani ekip in kanalov}} \\
+\hline
+
+\texttt{GET /teams/\{team-id\}
+/\{channel-id\}/members} &
+Pridobi člane zasebnega kanala. \\
+\hline
+
+\texttt{POST ../members} &
+Doda člana v zasebni kanal. \\
+\hline
+
+\texttt{DELETE ../members/\{membership-id\}} &
+Odstrani člana iz zasebnega kanala. \\
+\hline
+
+\texttt{GET /teams/\{team-id\}/members} &
+Pridobi člane ekipe. \\
+\hline
+
+\texttt{POST /teams/\{team-id\}/members} &
+Doda člana v ekipo. \\
+\hline
+
+\texttt{DELETE /teams/\{team-id\}
+/members/\{membership-id\}} &
+Odstrani člana iz ekipe. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Sporočila in odgovori}} \\
+\hline
+
+\texttt{GET /teams/\{team-id\}
+/\{channel-id\}/messages} &
+Pridobi sporočila v kanalu. \\
+\hline
+
+\texttt{POST ../messages} &
+Ustvari novo sporočilo v kanalu. \\
+\hline
+
+\texttt{GET ../messages/\{message-id\}} &
+Pridobi določeno sporočilo kanala. \\
+\hline
+
+\texttt{PATCH ../messages/\{message-id\}} &
+Posodobi sporočilo kanala. \\
+\hline
+
+\texttt{DELETE ../messages/\{message-id\}} &
+Izbriše sporočilo kanala. \\
+\hline
+
+\texttt{POST ../messages/\{message-id\}/replies} &
+Ustvari odgovor na sporočilo. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Zasebni klepeti}} \\
+\hline
+
+\texttt{GET /chats} &
+Pridobi seznam klepetov uporabnika. \\
+\hline
+
+\texttt{POST /chats} &
+Ustvari nov klepet. \\
+\hline
+
+\texttt{GET /chats/\{chat-id\}} &
+Pridobi določen klepet. \\
+\hline
+
+\texttt{DELETE /chats/\{chat-id\}} &
+Izbriše klepet. \\
+\hline
+
+\texttt{GET /chats/\{chat-id\}/messages} &
+Pridobi sporočila klepeta. \\
+\hline
+
+\texttt{POST /chats/\{chat-id\}/messages} &
+Pošlje novo sporočilo v klepet. \\
+\hline
+
+\texttt{GET /chats/\{chat-id\}/members} &
+Pridobi člane klepeta. \\
+\hline
+
+\texttt{POST /chats/\{chat-id\}/members} &
+Doda člana v klepet. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Aplikacije Teams}} \\
+\hline
+
+\texttt{GET /teams/\{team-id\}/installedApps} &
+Pridobi nameščene aplikacije v ekipi. \\
+\hline
+
+\texttt{POST ../installedApps} &
+Namesti aplikacijo v ekipo. \\
+\hline
+
+\texttt{DELETE ../installedApps/\{app-installation-id\}} &
+Odstrani aplikacijo iz ekipe. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Zavihki v kanalih}} \\
+\hline
+
+\texttt{GET /teams/\{team-id\}
+/channels/\{channel-id\}/tabs} &
+Pridobi zavihke kanala. \\
+\hline
+
+\texttt{POST ../tabs} &
+Ustvari nov zavihek v kanalu. \\
+\hline
+
+\texttt{GET ../tabs/\{tab-id\}} &
+Pridobi določen zavihek. \\
+\hline
+
+\texttt{PATCH ../tabs/\{tab-id\}} &
+Posodobi zavihek. \\
+\hline
+
+\texttt{DELETE ../tabs/\{tab-id\}} &
+Odstrani zavihek. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Podatki o uporabniku}} \\
+\hline
+
+\texttt{GET /users/\{user-id\}/joinedTeams} &
+Pridobi ekipe, katerih član je uporabnik. \\
+\hline
+
+\texttt{GET /me/joinedTeams} &
+Pridobi ekipe trenutno prijavljenega uporabnika. \\
+\hline
+
+\texttt{GET /me/chats} &
+Pridobi klepete trenutnega uporabnika. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Spletni sestanki}} \\
+\hline
+
+\texttt{GET /me/onlineMeetings} &
+Pridobi spletne sestanke uporabnika. \\
+\hline
+
+\texttt{POST /me/onlineMeetings} &
+Ustvari nov spletni sestanek Teams. \\
+\hline
+
+\texttt{GET /me/onlineMeetings/\{meeting-id\}} &
+Pridobi podatke o spletnem sestanku. \\
+\hline
+
+\texttt{PATCH /me/onlineMeetings/\{meeting-id\}} &
+Posodobi spletni sestanek. \\
+\hline
+
+\texttt{DELETE /me/onlineMeetings/\{meeting-id\}} &
+Izbriše spletni sestanek. \\
+\hline
+
+\multicolumn{2}{|l|}{\textbf{Organizacijski podatki}} \\
+\hline
+
+\texttt{GET /communications/callRecords} &
+Pridobi zapise klicev Teams. \\
+\hline
+
+\texttt{GET /communications/onlineMeetings} &
+Dostop do spletnih sestankov v organizaciji. \\
+\hline
+
+\end{longtable}
 
 \chapter{Implementacija aplikacije}
 
